@@ -1,19 +1,8 @@
 a {
 	text-decoration: none;
 }
-
 body {
-	margin: 0;
-	margin-bottom: 25px;
-	padding: 0;
-	background-color: #f0f0f0;
-	font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-	font-size: 13px;
-	color: #333;
-}
-h1 {
-	font-size: 28px;
-	color: #000;
+	font-family: "proxima-nova-1","proxima-nova-2",helvetica,arial,sans-serif;
 }
 #nav_bg {
 	background-image: url('../images/nav_bg.png');
@@ -57,7 +46,7 @@ h1 {
 	width: 100px;
 	text-align: center;
 }
-#page {
+#main {
 	background-color: #f0f0f0;
 	width: 750px;
 	margin: 0;
@@ -187,4 +176,15 @@ h1 {
 }
 #sidebar ul.links li {
 	margin-bottom: 5px;
+}
+#footer_bg {
+	background-color: #BB8CDD;
+    clear: both;
+    height: 50px;
+    width: 100%;
+}
+#footer {
+	color: #FFFFFF;
+	width: 960px;
+	margin: 0px auto;
 }
