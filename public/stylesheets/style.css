@@ -12,7 +12,7 @@ body {
 	-moz-border-radius: 8px;
 	border-radius: 8px;
 }
-.content_pane h3 {
+.content_pane_title {
 	margin-top: 25px;
 	font-size: 16px;
 	padding-bottom: 10px;
@@ -74,6 +74,15 @@ body {
 #sidebar {
 	float: right;
 	width: 250px;
+}
+#sidebar .links a {
+	background: none;
+}
+#sidebar .links a:visited {
+	color: #0066CC;
+}
+#sidebar .links a:hover {
+	color: #e12000;
 }
 #footer {
 	clear: both;
