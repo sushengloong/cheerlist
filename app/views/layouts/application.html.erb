@@ -1,22 +1,55 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>CheerList</title>
+		<title>CheerList - <%= @title || "Check-in Games and Support Your Favourite Team" %></title>
 		<%= favicon_link_tag "favicon.ico" %>
 		<%= stylesheet_link_tag :all %>
 		<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
 		<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-		<%= stylesheet_link_tag 'style', :media => 'screen' %> <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+		<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+		<%= stylesheet_link_tag "fancybox/jquery.fancybox-1.3.4"%>
+		<%= stylesheet_link_tag 'style', :media => 'screen' %> 
 		<%= javascript_include_tag :defaults %>
+		<%= javascript_include_tag "fancybox/jquery.fancybox-1.3.4.pack" %>
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
 		<%= render "layouts/nav" %>
-		<div id="main">
+		<div id="page">
       <%= render "layouts/msg" %>
       <%= render "layouts/sidebar" %>
-      <%= render "layouts/content"%>
+      <div id="main">
+        <%= yield %>
+      </div>
     </div>
 		<%= render "layouts/footer" %>
+		<div id="login_box" class="hide">
+			<%= form_for("user", :url => user_session_path, :html => {:id => "login_form"}) do |f| %>
+			<fieldset>
+			  <legend>Login</legend>
+  			<p>
+          <%= f.label :email %><br />
+          <%= f.email_field :email %>
+        </p>
+  			<p>
+          <%= f.label :password %><br />
+          <%= f.password_field :password %>
+        </p>
+  			<p>
+  			  <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+  			</p>
+  			<p>
+          <%= f.submit "Sign in" %> Not a member? <%= link_to "Sign up", new_user_registration_path %><br />
+        </p>
+  			<p>
+  			  <%= link_to "Forgot your password?", new_password_path('user') %>
+  			</p>
+  			<p>
+  			  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path('user') %>
+  			</p>
+  		</fieldset>
+			<% end %>
+		</div>
 	</body>
 </html>

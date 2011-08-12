@@ -12,17 +12,19 @@
 				<li>
 					<%= link_to "Leaderboard", root_path %>
 				</li>
+				<% unless user_signed_in? %>
 				<li>
 					<%= link_to "Sign Up", new_user_registration_path %>
 				</li>
+				<% end %>
 			</ul>
 		</div>
 		<div id="user_nav">
 			<% if user_signed_in? %>
-			Signed in as <%= current_user.email %>. Not you?
+			Signed in as <%= current_user.email %>.
 			<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 			<% else %>
-			Have an account? <%= link_to "Login", new_user_session_path %>
+			Have an account? <%= link_to "Login", "#login_form", :id => "login_link" %>
 			<% end %>
 		</div>
 	</div>
