@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Cheerlist</title>
+		<title>CheerList</title>
+		<%= favicon_link_tag "favicon.ico" %>
 		<%= stylesheet_link_tag :all %>
 		<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
 		<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
@@ -11,7 +12,11 @@
 	</head>
 	<body>
 		<%= render "layouts/nav" %>
-		<%= render "layouts/main" %>
+		<div id="main">
+      <%= render "layouts/msg" %>
+      <%= render "layouts/sidebar" %>
+      <%= render "layouts/content"%>
+    </div>
 		<%= render "layouts/footer" %>
 	</body>
 </html>
