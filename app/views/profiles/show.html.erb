@@ -2,6 +2,10 @@
   <p id="notice"><%= notice %></p>
   
   <p>
+    <%= image_tag @profile.image_url, :alt => "User #{@profile.user.id}" %>
+  </p>
+  
+  <p>
     <b>First name:</b>
     <%= @profile.first_name %>
   </p>
@@ -16,16 +20,7 @@
     <%= @profile.points %>
   </p>
   
-  <p>
-    <b>Image url:</b>
-    <%= @profile.image_url %>
-  </p>
-  
-  <p>
-    <b>User:</b>
-    <%= @profile.user_id %>
-  </p>
-  
-  
+  <% if user_signed_in? && current_user.id == @profile.user.id %>
   <%= link_to 'Edit', edit_profile_path(@profile) %>
+  <% end %>
 </div>

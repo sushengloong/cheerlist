@@ -1,5 +1,8 @@
 class ProfilesController < ApplicationController
 
+  before_filter :authenticate_user!, :except => [:show]
+  before_filter :check_user, :except => [:show]
+  
   # GET /profiles/1
   # GET /profiles/1.xml
   def show
@@ -19,7 +22,6 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.xml
   def update
     @profile = Profile.find_or_create_by_user_id(params[:user_id])
-
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
@@ -28,6 +30,16 @@ class ProfilesController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+private
+  def check_user
+    if current_user.id.to_s == params[:user_id]
+      return true
+    else
+      redirect_to profile_url, :alert => "Unauthorised access!";
+      return false
     end
   end
   
