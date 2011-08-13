@@ -27,6 +27,12 @@
 			<%= form_for("user", :url => user_session_path, :html => {:id => "login_form"}) do |f| %>
 			<fieldset>
 			  <legend>Login</legend>
+			  <p>
+			    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+			  </p>
+			  <p>
+          <%= link_to "Sign in with Google", user_omniauth_authorize_path(:open_id, :openid_url => "https://www.google.com/accounts/o8/id") %>
+			  </p>
   			<p>
           <%= f.label :email %><br />
           <%= f.email_field :email %>

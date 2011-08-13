@@ -10,6 +10,9 @@ gem 'rails', '3.0.9'
 gem 'mysql', '~> 2.8.1'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'devise'
+gem 'oa-oauth', :require => 'omniauth/oauth'
+gem 'oa-openid', :require => 'omniauth/openid'
+gem "mongrel", ">= 1.2.0.pre2"
 
 # Use unicorn as the web server
 # gem 'unicorn'

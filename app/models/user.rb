@@ -6,8 +6,35 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
+         :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  # authentication using facebook connect
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token['extra']['user_hash']
+    if user = User.find_by_email(data["email"])
+      user
+    else # Create a user with a stub password.
+      user = User.new(:email => data["email"], :password => Devise.friendly_token[0,20])
+      user.confirm!
+      user.save!
+      user
+    end
+  end
+
+  # authentication using open id
+  def self.find_for_open_id(access_token, signed_in_resource=nil)
+    data = access_token['user_info']
+    if user = User.find_by_email(data["email"])
+      user
+    else # Create a user with a stub password.
+      user = User.new(:email => data["email"], :password => Devise.friendly_token[0,20])
+      user.confirm!
+      user.save!
+      user
+    end
+  end
+
 end
