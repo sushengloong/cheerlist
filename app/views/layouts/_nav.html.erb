@@ -12,7 +12,11 @@
 				<li>
 					<%= link_to "Leaderboard", root_path %>
 				</li>
-				<% unless user_signed_in? %>
+				<% if user_signed_in? %>
+				<li>
+          <%= link_to "Profile", profile_path(current_user.id) %>
+        </li>
+				<% else %>
 				<li>
 					<%= link_to "Sign Up", new_user_registration_path %>
 				</li>

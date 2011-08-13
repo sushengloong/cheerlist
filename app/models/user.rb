@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  has_one :profile
+  has_one :profile, :dependent => :destroy
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password.
       user = User.new(:email => data["email"], :password => Devise.friendly_token[0,20])
       user.confirm!
+      user.create_profile :first_name => data["first_name"] || "", 
+        :last_name => data["last_name"] || "", :points => 0,
+        :image_url => "https://graph.facebook.com/#{data["id"]}/picture"
       user.save!
       user
     end
@@ -32,6 +35,8 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password.
       user = User.new(:email => data["email"], :password => Devise.friendly_token[0,20])
       user.confirm!
+      user.create_profile :first_name => data["first_name"] || "", 
+        :last_name => data["last_name"] || "", :points => 0
       user.save!
       user
     end

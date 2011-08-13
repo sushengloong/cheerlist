@@ -3,7 +3,9 @@ Cheerlist::Application.routes.draw do
 
   get "omniauth_callbacks/open_id"
 
-  resources :profiles
+  match "/profiles/:user_id" => "profiles#show", :via => :get, :as => :profile
+  match "/profiles/:user_id/edit" => "profiles#edit", :via => :get, :as => :edit_profile
+  match "/profiles/:user_id" => "profiles#update", :via => :put, :as => :profile
 
   #devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

@@ -1,30 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>First name:</b>
-  <%= @profile.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @profile.last_name %>
-</p>
-
-<p>
-  <b>Points:</b>
-  <%= @profile.points %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @profile.image_url %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @profile.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<div class="content_pane">
+  <p id="notice"><%= notice %></p>
+  
+  <p>
+    <b>First name:</b>
+    <%= @profile.first_name %>
+  </p>
+  
+  <p>
+    <b>Last name:</b>
+    <%= @profile.last_name %>
+  </p>
+  
+  <p>
+    <b>Points:</b>
+    <%= @profile.points %>
+  </p>
+  
+  <p>
+    <b>Image url:</b>
+    <%= @profile.image_url %>
+  </p>
+  
+  <p>
+    <b>User:</b>
+    <%= @profile.user_id %>
+  </p>
+  
+  
+  <%= link_to 'Edit', edit_profile_path(@profile) %>
+</div>
