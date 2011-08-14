@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811150623) do
+ActiveRecord::Schema.define(:version => 20110813145829) do
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(:version => 20110811150623) do
     t.integer  "points"
     t.string   "image_url"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "team_id"
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
