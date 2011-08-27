@@ -1,7 +1,12 @@
 <div class="content_pane">
   <h1>Editing profile</h1>
   
-  <%= render 'form' %>
+  <%= form_for(@profile) do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f, :teams => @teams } %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
   
   <%= link_to 'Back', @profile %>
 </div>

@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find_or_create_by_user_id(params[:user_id])
+    @teams = Team.all
   end
 
   # PUT /profiles/1

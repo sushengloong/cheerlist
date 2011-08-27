@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
   
   <p>
-    <%= image_tag @profile.image_url, :alt => "User #{@profile.user.id}" %>
+    <%= image_tag @profile.image_url.to_s, :alt => "User #{@profile.user.id}" %>
   </p>
   
   <p>
@@ -18,6 +18,11 @@
   <p>
     <b>Points:</b>
     <%= @profile.points %>
+  </p>
+  
+  <p>
+    <b>Supports:</b>
+    <%= @profile.user.team.name unless @profile.user.team.nil? %>
   </p>
   
   <% if user_signed_in? && current_user.id == @profile.user.id %>
