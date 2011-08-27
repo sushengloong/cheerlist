@@ -1,3 +1,3 @@
 class Team < ActiveRecord::Base
-  has_many :profiles
+  has_many :fans, :class_name => "User"
 end

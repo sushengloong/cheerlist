@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813145829) do
+ActiveRecord::Schema.define(:version => 20110827122739) do
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20110813145829) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "team_id"
   end
 
   create_table "teams", :force => true do |t|
@@ -47,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110813145829) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

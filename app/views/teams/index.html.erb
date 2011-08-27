@@ -1,0 +1,17 @@
+<div class="content_pane">
+  <h1>All English Premier League Teams</h1>
+  
+  <table>
+    <tr>
+      <th>Teams</th>
+      <th>Links</th>
+    </tr>
+  
+  <% @teams.each do |team| %>
+  <tr>
+      <td><%= image_tag team.image_url, :alt => team.name %></td>
+      <td><%= link_to team.name, team %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

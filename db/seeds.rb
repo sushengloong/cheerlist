@@ -27,7 +27,7 @@
     "Swansea City" => "Swansea City are the first Welsh side to play in the English Premier League. They were also the last to play in the old Division One: they spent two years there between 1981 and 1983 as part of an astonishing ascent and descent through the Football League. The club was founded in 1912, and were originally known as Swansea Town. They sensationally beat the English champions, Blackburn, with nine men in the FA Cup of 1914-15, and were founder members of Division Three of the Football League in 1920",
     "Tottenham Hotspur" => "Tottenham Hotspur's position as one of the glory teams of British football was cemented in 1961, when they became the first English team to do the Double in 20th century. That was one of two championships the club has won, but they have added 15 major cups to their collection - including, in 1963, the first European trophy won by an English club.",
     "West Bromwich Albion" => "West Bromwich Albion are one of many English clubs who find nostalgia irresistible. In the 21st century they have become known as a yo-yo club, but before that they had loftier ambitions: between 1886 and 1968, the club reached 10 FA Cup finals, winning five. They were also champions of England for the only time in 1920. ",
-    "Wigen Athletic" => "Sporting tales don't come much more unexpected than that of Wigan Athletic, who had to overcome all manner of obstacles to reach the upper echelons of English football. The widespread apathy of a town that puts rugby first, second and third has been a recurring problem, and Wigan also had to deal with a history of failure. They are the fifth football side in the town, with Wigan County, Wigan United, Wigan Town and Wigan Borough all folding.",
+    "Wigan Athletic" => "Sporting tales don't come much more unexpected than that of Wigan Athletic, who had to overcome all manner of obstacles to reach the upper echelons of English football. The widespread apathy of a town that puts rugby first, second and third has been a recurring problem, and Wigan also had to deal with a history of failure. They are the fifth football side in the town, with Wigan County, Wigan United, Wigan Town and Wigan Borough all folding.",
     "Wolverhampton Wanderers" => "Wolves are a club that struggles to escape the past. No wonder, when it was so glorious. Between 1949 and 1960, under the management of Stan Cullis, Wolves won two FA Cups and all three of their league championships. That period has defined everything Wolves achieved before or since."
   }
 
@@ -36,10 +36,4 @@ epl_teams.each do | name, desc |
     Team.create! :name => name, :description => desc, 
       :image_url => "teams/" + name.downcase.gsub(" ", "_") + "_logo.gif";
   end
-end
-
-
-if Team.find_by_name("Arsenal").nil?
-  Team.create! :name => "Arsenal", :description => "Arsenal are the longest residents in the top tier of English football, having been there since 1919. They have won all 27 of their major trophies in that time, including three domestic Doubles. They are also the only team since the 19th century to remain unbeaten throughout an entire top-flight league campaign.", 
-                :image_url => "http://soccernet-assets.espn.go.com/design05/images/2010/1115/arsenal_badge_275x155.jpg"
 end

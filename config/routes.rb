@@ -7,10 +7,15 @@ Cheerlist::Application.routes.draw do
   match "/profiles/:user_id/edit" => "profiles#edit", :via => :get, :as => :edit_profile
   match "/profiles/:user_id" => "profiles#update", :via => :put, :as => :profile
 
+  match "/teams" => "teams#index", :via => :get, :as => :teams
+  match "/teams/:id" => "teams#show", :via => :get, :as => :team
+
   #devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
 
+  root :to => "pages#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -61,8 +66,6 @@ Cheerlist::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-
-  root :to => "pages#index"
 
   # See how all your routes lay out with "rake routes"
 
