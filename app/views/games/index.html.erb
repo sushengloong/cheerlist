@@ -1,0 +1,21 @@
+<div class="content_pane">
+  <h1>All English Premier League Games</h1>
+  
+  <table>
+  <% if @games.nil? || @games.empty? %>
+  <tr><td>No game is available</td</tr>
+  <% end %>
+  <% @games.each do |game| %>
+    <tr><td colspan="5"><%= game.time %></td></tr>
+    <tr>
+      <td><%= game.status %></td>
+      <td><%= game.home_team.name %></td>
+      <td>
+      <%= game.home_score unless game.home_score.nil? %> v <%= game.away_score unless game.away_score.nil? %>
+      </td>
+      <td><%= game.away_team.name %></td>
+      <td><%= link_to 'Show', game %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

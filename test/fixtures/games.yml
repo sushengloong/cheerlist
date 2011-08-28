@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  time: 2011-08-28 10:31:52
+  home_score: 1
+  away_score: 1
+  status: MyString
+
+two:
+  time: 2011-08-28 10:31:52
+  home_score: 1
+  away_score: 1
+  status: MyString

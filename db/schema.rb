@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827122739) do
+ActiveRecord::Schema.define(:version => 20110828023152) do
+
+  create_table "games", :force => true do |t|
+    t.datetime "time"
+    t.integer  "home_score"
+    t.integer  "away_score"
+    t.string   "status"
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
