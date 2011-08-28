@@ -15,6 +15,7 @@ Cheerlist::Application.routes.draw do
   
   match "/games" => "games#index", :via => :get, :as => :games
   match "/games/:id" => "games#show", :via => :get, :as => :game
+  match "/leaderboard" => "games#leaderboard", :via => :get, :as => :leaderboard
 
   #devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

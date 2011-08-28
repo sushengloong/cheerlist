@@ -20,4 +20,12 @@ class GamesController < ApplicationController
       format.xml  { render :xml => @game }
     end
   end
+  
+  def leaderboard
+    @users = User.leaders
+    respond_to do |format|
+      format.html # leaderboard.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end
 end
