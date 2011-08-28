@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20110828085841) do
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "points"
+    t.integer  "points",     :default => 0
     t.string   "image_url"
     t.integer  "user_id"
     t.datetime "created_at"

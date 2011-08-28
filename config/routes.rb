@@ -3,12 +3,15 @@ Cheerlist::Application.routes.draw do
 
   get "omniauth_callbacks/open_id"
 
+  #devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  match "/users/:user_id" => "profiles#show", :via => :get, :as => :profile
+  match "/users/:user_id/edit" => "profiles#edit", :via => :get, :as => :edit_profile
+  match "/users/:user_id" => "profiles#update", :via => :put, :as => :profile
+  
   match "/users/:user_id/check_ins" => "check_ins#index", :via => :get, :as => :check_ins
   match "/games/:game_id/check_ins/new" => "check_ins#new", :via => :get, :as => :new_check_in
-
-  match "/profiles/:user_id" => "profiles#show", :via => :get, :as => :profile
-  match "/profiles/:user_id/edit" => "profiles#edit", :via => :get, :as => :edit_profile
-  match "/profiles/:user_id" => "profiles#update", :via => :put, :as => :profile
 
   match "/teams" => "teams#index", :via => :get, :as => :teams
   match "/teams/:id" => "teams#show", :via => :get, :as => :team
@@ -16,11 +19,7 @@ Cheerlist::Application.routes.draw do
   match "/games" => "games#index", :via => :get, :as => :games
   match "/games/:id" => "games#show", :via => :get, :as => :game
   match "/leaderboard" => "games#leaderboard", :via => :get, :as => :leaderboard
-
-  #devise_for :users
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :users
-
+  
   root :to => "pages#index"
   
   # The priority is based upon order of creation:
