@@ -14,6 +14,7 @@ gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'oa-openid', :require => 'omniauth/openid'
 gem 'mongrel', '>= 1.2.0.pre2'
 gem 'nokogiri'
+gem 'acts_as_commentable_with_threading'
 
 # Use unicorn as the web server
 # gem 'unicorn'

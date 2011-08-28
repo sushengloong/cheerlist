@@ -1,0 +1,13 @@
+<h1>All Your Check-ins</h1>
+
+<table>
+  <tr>
+    <th>Game</th>
+  </tr>
+
+<% @check_ins.each do |check_in| %>
+  <tr>
+    <td><%= check_in.game_id %></td>
+  </tr>
+<% end %>
+</table>

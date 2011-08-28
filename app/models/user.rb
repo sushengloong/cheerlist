@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   
   has_one :profile, :dependent => :destroy
   belongs_to :team
+  has_many :check_ins
+  has_many :games, :through => :check_ins
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -42,5 +44,8 @@ class User < ActiveRecord::Base
       user
     end
   end
-
+  
+  def has_checked_in?(game_id)
+    !CheckIn.find_by_user_id_and_game_id(self.id, game_id).nil?
+  end
 end
