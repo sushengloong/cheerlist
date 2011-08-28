@@ -2,22 +2,18 @@
   <p id="notice"><%= notice %></p>
   
   <p>
-    <b>Time:</b>
     <%= @game.time %>
   </p>
   
   <p>
-    <b>Home score:</b>
-    <%= @game.home_score %>
-  </p>
-  
-  <p>
-    <b>Away score:</b>
-    <%= @game.away_score %>
-  </p>
-  
-  <p>
-    <b>Status:</b>
     <%= @game.status %>
+  </p>
+  
+  <p>
+    <%= image_tag @game.home_team.image_url, :alt => @game.home_team.name %>
+    <%= @game.home_team.name %>
+    <%= "#{@game.home_score} - #{@game.away_score}" %>
+    <%= @game.away_team.name %>
+    <%= image_tag @game.away_team.image_url, :alt => @game.away_team.name %>
   </p>
 </div>
