@@ -1,6 +1,6 @@
 <div class="content_pane">
   <p id="notice"><%= notice %></p>
-  
+  <h2>Game</h2>
   <p>
     <%= @game.time %>
   </p>
@@ -16,4 +16,16 @@
     <%= @game.away_team.name %>
     <%= image_tag @game.away_team.image_url, :alt => @game.away_team.name %>
   </p>
+</div>
+<div class="content_pane">
+  <h2>Comments</h2>
+  <% if @game.comment_threads.blank? %>
+    <p>No comments</p>
+  <% end %>
+  <% @game.comment_threads.each do |comment| %>
+  <p><%= comment.body %></p>
+  <% end %>
+  
+  <h3>Add Comment</h3>
+  <p>todo</p>
 </div>
