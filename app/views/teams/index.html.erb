@@ -2,10 +2,10 @@
   <h1>All English Premier League Teams</h1>
   
   <table>
-    <tr>
-      <th>Teams</th>
-      <th>Links</th>
-    </tr>
+  
+  <% if @teams.blank? %>
+  <tr><td>No team is available</td</tr>
+  <% end %>
   
   <% @teams.each do |team| %>
   <tr>

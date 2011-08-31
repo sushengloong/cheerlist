@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :team
   has_many :check_ins
   has_many :games, :through => :check_ins
+  accepts_nested_attributes_for :profile
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
          :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes
   
   # authentication using facebook connect
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
   end
   
   def self.leaders(limit=10)
-    User.find(:all, :include => :profile, :order => "profiles.points DESC", :limit => limit)
+    User.includes(:profile).order("profiles.points DESC").limit(limit)
   end
   
   def has_checked_in?(game_id)

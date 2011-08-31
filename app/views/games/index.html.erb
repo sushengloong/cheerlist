@@ -2,7 +2,7 @@
   <h1>All English Premier League Games</h1>
   
   <table>
-  <% if @games.nil? || @games.empty? %>
+  <% if @games.blank? %>
   <tr><td>No game is available</td</tr>
   <% end %>
   <% @games.each do |game| %>

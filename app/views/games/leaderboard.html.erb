@@ -1,7 +1,7 @@
 <div class="content_pane">
   <h1>Top 10 Leaderboard</h1>
   <table>
-  <% if @users.nil? || @users.empty? %>
+  <% if @users.blank? %>
   <tr><td>No user found!</td></tr>
   <% end %>
   <% @users.each.with_index do |user, i| %>
