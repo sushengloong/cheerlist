@@ -2,7 +2,8 @@
   <p id="notice"><%= notice %></p>
   
   <p>
-    <%= image_tag @profile.image_url.to_s, :alt => "User #{@profile.user.id}" %>
+    <%= image_tag (@profile.image_url.blank? ? "default_avatar.gif":@profile.image_url.to_s), 
+      :alt => "User #{@profile.user.id}" %>
   </p>
   
   <p>
