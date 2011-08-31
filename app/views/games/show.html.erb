@@ -2,13 +2,8 @@
   <p id="notice"><%= notice %></p>
   <h2>Game</h2>
   <p>
-    <%= @game.time %>
+    <%= @game.time.strftime('%b %d, %Y at %H:%M') %> - <%= @game.status %>
   </p>
-  
-  <p>
-    <%= @game.status %>
-  </p>
-  
   <p>
     <%= image_tag @game.home_team.image_url, :alt => @game.home_team.name %>
     <%= @game.home_team.name %>
@@ -23,9 +18,17 @@
     <p>No comments</p>
   <% end %>
   <% @game.comment_threads.each do |comment| %>
-  <p><%= comment.body %></p>
+    <%= "#{comment.user.email} comments:" %>
+    <p>
+      <%= comment.body %><br />
+      Posted on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>
+    </p>
   <% end %>
   
-  <h3>Add Comment</h3>
-  <p>todo</p>
+  <h3>Add New Comment</h3>
+  <% if user_signed_in? && !@comment.nil? %>
+    <%= render 'comments/form' %>
+  <% else %>
+    <p>Please <%= link_to "log in", new_user_session_path %> to add comment!</p>
+  <% end %>
 </div>

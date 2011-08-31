@@ -20,6 +20,10 @@ Cheerlist::Application.routes.draw do
   match "/games/:id" => "games#show", :via => :get, :as => :game
   match "/leaderboard" => "games#leaderboard", :via => :get, :as => :leaderboard
   
+  match "/games/:game_id/comments" => "comments#create", :via => :post, :as => :game_comments
+  match "/comments/:id" => "comments#update", :via => :put, :as => :comment
+  match "/comments/:id" => "comments#destroy", :via => :delete, :as => :comment
+  
   root :to => "pages#index"
   
   # The priority is based upon order of creation:

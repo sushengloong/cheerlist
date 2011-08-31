@@ -14,7 +14,9 @@ class GamesController < ApplicationController
   # GET /games/1.xml
   def show
     @game = Game.find(params[:id])
-
+    unless current_user.blank?
+      @comment = Comment.build_from(@game, current_user.id, "")
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @game }
