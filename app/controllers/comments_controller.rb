@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to(@game, :notice => 'Comment was successfully created.') }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(@game, :alert => 'Comment addition failed!') }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to(@game, :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(@game, :alert => 'Failed to edit comment!') }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end

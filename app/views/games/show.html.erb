@@ -14,6 +14,12 @@
 </div>
 <div class="content_pane">
   <h2>Comments</h2>
+  <% if user_signed_in? && !@comment.nil? %>
+    <%= render 'comments/form' %>
+  <% else %>
+    <p>Please <%= link_to "log in", new_user_session_path %> to add comment!</p>
+  <% end %>
+  <div class="clear"></div>
   <% if @game.comment_threads.blank? %>
     <p>No comments</p>
   <% end %>
@@ -23,12 +29,5 @@
       <%= comment.body %><br />
       Posted on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>
     </p>
-  <% end %>
-  
-  <h3>Add New Comment</h3>
-  <% if user_signed_in? && !@comment.nil? %>
-    <%= render 'comments/form' %>
-  <% else %>
-    <p>Please <%= link_to "log in", new_user_session_path %> to add comment!</p>
   <% end %>
 </div>

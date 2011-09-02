@@ -12,11 +12,12 @@
   </div>
   <% end %>
   
-  <div class="field">
-    <%= f.text_area :body %>
+  <div id="comment_text_area_wrapper" class="field">
+    <%= f.text_area :body, :id => "comment_text_area" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="action">
+    <%= f.submit "Shout!", :id => "comment_submit_button" %>
   </div>
   
 <% end %>

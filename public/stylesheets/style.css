@@ -210,3 +210,17 @@ div.alert {
 	width: 960px;
 	margin: 0px auto;
 }
+#comment_text_area_wrapper {
+  margin: 0px;
+}
+#comment_text_area {
+  height: 48px;
+  float: left;
+  margin: 0px;
+}
+#comment_submit_button {
+  height: 48px;
+  width: 70px;
+  float: left;
+  margin: 0px auto;
+}
