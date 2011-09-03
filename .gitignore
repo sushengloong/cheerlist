@@ -3,6 +3,7 @@ db/*.sqlite3*
 log/*.log
 log/*.log.lck
 *.log
+solr/data/*
 /tmp/
 doc/
 *.swp
