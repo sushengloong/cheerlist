@@ -9,10 +9,11 @@
   <% end %>
   
   <table>
-  <% if @games.blank? %>
+  <% if @search.results.blank? %>
   <tr><td>No game is available</td</tr>
   <% end %>
-  <% @games.each do |game| %>
+  <%= paginate @search %>
+  <% @search.results.each do |game| %>
     <tr><td colspan="5"><%= game.time %></td></tr>
     <tr>
       <td><%= game.status %></td>

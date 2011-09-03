@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games = Game.order(:time).page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,8 +30,8 @@ class GamesController < ApplicationController
   def search
     @search = Game.search do
       fulltext params[:search]
+      paginate :page => params[:page], :per_page => 5
     end
-    logger.debug "[$SEARCH$]#{@games.inspect}"
-    @games = @search.results 
+    #@games = @search.results
   end
 end
