@@ -45,7 +45,11 @@
                   friendship.friend.profile.image_url.to_s),
                   :alt => "User #{friendship.friend.id}" %></td>
           <td><%= "User #{friendship.friend.id}: #{friendship.friend.email}" %></td>
-          <td><%= link_to "Unfriend", friendship, :method => :delete %></td>
+          <td>
+            <% if user_signed_in? && current_user.id == @profile.user.id %>
+              <%= link_to "Unfriend", friendship, :method => :delete %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>
