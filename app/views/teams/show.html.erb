@@ -3,7 +3,7 @@
   
   <p><b><%= @team.name %></b></p>
   <p>
-    <%= image_tag @team.image_url %>
+    <%= image_tag @team.image_url.blank? ? "default_avatar.gif":@team.image_url.to_s %>
   </p>
   <p>
     <%= @team.description %>

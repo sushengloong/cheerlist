@@ -8,9 +8,11 @@
   <% end %>
   
   <% @teams.each do |team| %>
-  <tr>
-      <td><%= image_tag team.image_url.to_s, :alt => team.name %></td>
+    <tr>
+      <td><%= image_tag team.image_url.blank? ? "default_avatar.gif":team.image_url.to_s, 
+              :alt => team.name, :class => "team_logo_thumbnail" %></td>
       <td><%= link_to team.name, team %></td>
+      <td><%= pluralize(team.fans.blank? ? 0:team.fans.size, 'fan') %></td>
     </tr>
   <% end %>
 </table>

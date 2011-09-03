@@ -224,3 +224,7 @@ div.alert {
   float: left;
   margin: 0px auto;
 }
+.team_logo_thumbnail {
+  height: 100px;
+  width: 100px;
+}
