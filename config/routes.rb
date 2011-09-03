@@ -15,7 +15,8 @@ Cheerlist::Application.routes.draw do
   match "/users/:user_id" => "profiles#update", :via => :put, :as => :profile
   
   match "/users/:user_id/check_ins" => "check_ins#index", :via => :get, :as => :check_ins
-  match "/games/:game_id/check_ins/new" => "check_ins#new", :via => :get, :as => :new_check_in
+  match "/games/:game_id/check_ins/new" => "check_ins#new", :via => :get, :as => :new_game_check_ins
+  match "/games/:game_id/check_ins" => "check_ins#create", :via => :post, :as => :game_check_ins
 
   match "/teams" => "teams#index", :via => :get, :as => :teams
   match "/teams/:id" => "teams#show", :via => :get, :as => :team

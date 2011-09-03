@@ -19,9 +19,11 @@
         <td><%= link_to 'Show', game %></td>
         <td>
           <% if user_signed_in? && !current_user.has_checked_in?(game.id) %>
-          <%= link_to 'Check In', new_check_in_path(game) %>
+            <%= button_to 'Check-In', game_check_ins_path(game) %>
           <% elsif user_signed_in? && current_user.has_checked_in?(game.id) %>
-          Checked-in!
+            Checked-in!
+          <% else %>
+            <%= link_to "Login to check-in", new_user_session_path %>
           <% end %>
         </td>
       </tr>

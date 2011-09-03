@@ -1,8 +1,6 @@
 class CheckInsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   
-  # GET /check_ins
-  # GET /check_ins.xml
   def index
     @check_ins = CheckIn.find_by_user_id(params[:user_id])
 
@@ -12,9 +10,15 @@ class CheckInsController < ApplicationController
     end
   end
 
-  # GET /check_ins/new
-  # GET /check_ins/new.xml
   def new
+    @game = Game.find params[:game_id]
+    if @game.nil?
+      redirect_to games_url, :alert => "No such game found!"
+    end
+    @check_in = CheckIn.new
+  end
+  
+  def create
     if current_user.has_checked_in? params[:game_id]
       redirect_to games_url, :alert => "You've already checked in the game!"
     else

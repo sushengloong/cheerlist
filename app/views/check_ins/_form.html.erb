@@ -1,0 +1,24 @@
+<%= form_for [@game,@check_in] do |f| %>
+
+  <% if @check_in.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@check_in.errors.count, "error") %> prohibited this check-in from being saved:</h2>
+    
+    <ul>
+      <% @check_in.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <div class="field">
+    <%#= f.label :time %><br />
+    <%#= f.datetime_select :time %>
+  </div>
+  
+  <div class="action">
+    <%= f.submit "Check-in!", :id => "check_in_submit_button" %>
+  </div>
+  
+<% end %>

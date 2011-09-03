@@ -2,7 +2,14 @@
   <p id="notice"><%= notice %></p>
   <h2>Game</h2>
   <p>
-    <%= @game.time.strftime('%b %d, %Y at %H:%M') %> - <%= @game.status %>
+    <%= @game.time.strftime('%b %d, %Y at %H:%M') %> - <%= @game.status %>    
+    <% if user_signed_in? && !current_user.has_checked_in?(@game.id) %>
+      <%= button_to 'Check-In', game_check_ins_path(@game) %>
+    <% elsif user_signed_in? && current_user.has_checked_in?(@game.id) %>
+      Checked-in!
+    <% else %>
+      <%= link_to "Login to check-in", new_user_session_path %>
+    <% end %>
   </p>
   <p>
     <%= image_tag @game.home_team.image_url, :alt => @game.home_team.name %>
@@ -32,21 +39,21 @@
   <% end %>
 </div>
 <div class="content_pane">
-  <h2>Comments</h2>
+  <h2>Shoot Your Comments</h2>
   <% if user_signed_in? && !@comment.nil? %>
     <%= render 'comments/form' %>
   <% else %>
-    <p>Please <%= link_to "log in", new_user_session_path %> to add comment!</p>
+    <p>Please <%= link_to "log in", new_user_session_path %> to shoot your comments!</p>
   <% end %>
   <div class="clear"></div>
   <% if @game.comment_threads.blank? %>
-    <p>No comments</p>
+    <p>No shoots yet</p>
   <% end %>
   <% @game.comment_threads.each do |comment| %>
-    <%= "#{comment.user.email} comments:" %>
+    <%= "#{comment.user.email} shoots:" %>
     <p>
       <%= comment.body %><br />
-      Posted on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>
+      Shot at <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>
     </p>
   <% end %>
 </div>
