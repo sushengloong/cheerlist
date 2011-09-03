@@ -35,16 +35,17 @@
 </div>
 <div class="content_pane">
   <h1>Friends</h1>
-  <% if @profile.user.friends.blank? %>
+  <% if @profile.user.friendships.blank? %>
     No friends befriended.
   <% elsif %>
     <table>
-      <% @profile.user.friends.each do |friend| %>
+      <% @profile.user.friendships.each do |friendship| %>
         <tr>
-          <td><%= image_tag (friend.profile.image_url.blank? ? "default_avatar.gif":
-                  friend.profile.image_url.to_s),
-                  :alt => "User #{friend.id}" %></td>
-          <td><%= "User #{friend.id}: #{friend.email}" %></td>
+          <td><%= image_tag (friendship.friend.profile.image_url.blank? ? "default_avatar.gif":
+                  friendship.friend.profile.image_url.to_s),
+                  :alt => "User #{friendship.friend.id}" %></td>
+          <td><%= "User #{friendship.friend.id}: #{friendship.friend.email}" %></td>
+          <td><%= link_to "Unfriend", friendship, :method => :delete %></td>
         </tr>
       <% end %>
     </table>

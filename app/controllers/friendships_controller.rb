@@ -78,7 +78,7 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
 
     respond_to do |format|
-      format.html { redirect_to(friendships_url, :notice => "Unfriended successfully.") }
+      format.html { redirect_to(profile_url(current_user.id), :notice => "Unfriended successfully.") }
       format.xml  { head :ok }
     end
   end
