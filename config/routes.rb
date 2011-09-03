@@ -1,4 +1,6 @@
 Cheerlist::Application.routes.draw do
+  resources :friendships
+
   get "omniauth_callbacks/facebook"
 
   get "omniauth_callbacks/open_id"

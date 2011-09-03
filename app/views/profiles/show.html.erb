@@ -4,6 +4,9 @@
   <p>
     <%= image_tag (@profile.image_url.blank? ? "default_avatar.gif":@profile.image_url.to_s), 
       :alt => "User #{@profile.user.id}" %>
+    <% if !user_signed_in? || (user_signed_in? && current_user.id != @profile.user.id) %>
+      <%= link_to "Befriend", friendships_path(:friend_id => @profile.user), :method => :post %>
+    <% end %>
   </p>
   
   <p>
@@ -27,6 +30,23 @@
   </p>
   
   <% if user_signed_in? && current_user.id == @profile.user.id %>
-  <%= link_to 'Edit', edit_profile_path(@profile) %>
+    <%= link_to 'Edit', edit_profile_path(@profile) %>
+  <% end %>
+</div>
+<div class="content_pane">
+  <h1>Friends</h1>
+  <% if @profile.user.friends.blank? %>
+    No friends befriended.
+  <% elsif %>
+    <table>
+      <% @profile.user.friends.each do |friend| %>
+        <tr>
+          <td><%= image_tag (friend.profile.image_url.blank? ? "default_avatar.gif":
+                  friend.profile.image_url.to_s),
+                  :alt => "User #{friend.id}" %></td>
+          <td><%= "User #{friend.id}: #{friend.email}" %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 </div>

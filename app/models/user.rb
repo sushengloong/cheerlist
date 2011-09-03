@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   belongs_to :team
   has_many :check_ins
   has_many :games, :through => :check_ins
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  
   accepts_nested_attributes_for :profile
   
   # Include default devise modules. Others available are:
