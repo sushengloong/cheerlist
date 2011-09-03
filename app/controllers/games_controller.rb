@@ -20,7 +20,7 @@ class GamesController < ApplicationController
   end
   
   def leaderboard
-    @users = User.leaders
+    @users = User.includes(:profile).order("profiles.points DESC").page(params[:page]).per(10)
     respond_to do |format|
       format.html # leaderboard.html.erb
       format.xml  { render :xml => @users }

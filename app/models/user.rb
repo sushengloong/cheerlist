@@ -51,10 +51,6 @@ class User < ActiveRecord::Base
     end
   end
   
-  def self.leaders(limit=10)
-    User.includes(:profile).order("profiles.points DESC").limit(limit)
-  end
-  
   def has_checked_in?(game_id)
     !CheckIn.find_by_user_id_and_game_id(self.id, game_id).nil?
   end
