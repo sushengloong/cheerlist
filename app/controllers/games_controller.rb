@@ -1,6 +1,4 @@
 class GamesController < ApplicationController
-  # GET /games
-  # GET /games.xml
   def index
     @games = Game.all
 
@@ -9,9 +7,7 @@ class GamesController < ApplicationController
       format.xml  { render :xml => @games }
     end
   end
-
-  # GET /games/1
-  # GET /games/1.xml
+  
   def show
     @game = Game.find(params[:id])
     unless current_user.blank?
@@ -29,5 +25,13 @@ class GamesController < ApplicationController
       format.html # leaderboard.html.erb
       format.xml  { render :xml => @users }
     end
+  end
+  
+  def search
+    @search = Game.search do
+      fulltext params[:search]
+    end
+    logger.debug "[$SEARCH$]#{@games.inspect}"
+    @games = @search.results 
   end
 end

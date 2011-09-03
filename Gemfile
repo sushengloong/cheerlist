@@ -16,6 +16,7 @@ gem 'mongrel', '>= 1.2.0.pre2'
 gem 'nokogiri'
 gem 'acts_as_commentable_with_threading'
 gem 'kaminari'
+gem 'sunspot_rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

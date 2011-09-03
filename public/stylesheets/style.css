@@ -1,3 +1,6 @@
+h1 {
+  font-size: 24px;
+}
 a {
 	text-decoration: none;
 	color: #3987CB;
@@ -230,4 +233,8 @@ div.alert {
 }
 .pagination {
   text-align: center;
+}
+#games_search_form input {
+  font-size: 18px;
+  padding: 3px;
 }

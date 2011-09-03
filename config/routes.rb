@@ -16,6 +16,7 @@ Cheerlist::Application.routes.draw do
   match "/teams" => "teams#index", :via => :get, :as => :teams
   match "/teams/:id" => "teams#show", :via => :get, :as => :team
   
+  match "/games/search/" => "games#search", :via => :get, :as => :games_search
   match "/games" => "games#index", :via => :get, :as => :games
   match "/games/:id" => "games#show", :via => :get, :as => :game
   match "/leaderboard" => "games#leaderboard", :via => :get, :as => :leaderboard

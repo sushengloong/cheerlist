@@ -8,4 +8,13 @@ class Game < ActiveRecord::Base
   validates :away_team_id, :presence => true
   
   acts_as_commentable
+  
+  searchable do
+    text :home_team do
+      home_team.name
+    end
+    text :away_team do
+      away_team.name
+    end
+  end
 end

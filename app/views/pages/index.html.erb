@@ -1,5 +1,11 @@
 <div id="search" class="content_pane">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique dignissim dignissim. Donec sollicitudin libero a mauris aliquet porttitor. Integer nec ultrices urna. Phasellus vitae purus enim. In lectus ipsum, dignissim eu volutpat sit amet, rutrum non ligula. Praesent tempor nisl eros. Etiam id justo id est scelerisque eleifend. Phasellus consectetur dui tristique libero mollis ut eleifend quam pharetra. Fusce orci purus, dapibus eu aliquet convallis, semper ut eros. Curabitur imperdiet magna mattis risus commodo tempus. Duis lectus ipsum, tincidunt in egestas eu, bibendum ut diam. Nam arcu velit, semper nec varius convallis, lobortis vitae est. Aliquam convallis, ipsum nec imperdiet facilisis, magna velit rutrum lectus, sit amet consectetur magna odio nec elit. Integer auctor, ante id posuere molestie, sem augue accumsan mi, tempor euismod metus nisl eu mauris. </p>
+  <h1>Search for Your Favourite Games!</h1>
+  <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
+    <p>
+      <%= text_field_tag :search, params[:search] || "Manchester United" %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
 </div>
 <div id="content" class="content_pane">
 	<div id="header">
