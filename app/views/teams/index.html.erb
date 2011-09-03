@@ -1,6 +1,8 @@
 <div class="content_pane">
   <h1>All English Premier League Teams</h1>
   
+  <%= paginate @teams %>
+  
   <table>
   
   <% if @teams.blank? %>
@@ -15,5 +17,9 @@
       <td><%= pluralize(team.fans.blank? ? 0:team.fans.size, 'fan') %></td>
     </tr>
   <% end %>
-</table>
+  
+  </table>
+  
+  <%= paginate @teams %>
+  
 </div>

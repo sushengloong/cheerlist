@@ -1,6 +1,6 @@
 <div class="content_pane">
   <p id="notice"><%= notice %></p>
-  
+
   <p><b><%= @team.name %></b></p>
   <p>
     <%= image_tag @team.image_url.blank? ? "default_avatar.gif":@team.image_url.to_s %>
