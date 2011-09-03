@@ -1,4 +1,6 @@
 Cheerlist::Application.routes.draw do
+  resources :predictions
+
   resources :friendships
 
   get "omniauth_callbacks/facebook"
@@ -26,6 +28,8 @@ Cheerlist::Application.routes.draw do
   match "/games/:game_id/comments" => "comments#create", :via => :post, :as => :game_comments
   match "/comments/:id" => "comments#update", :via => :put, :as => :comment
   match "/comments/:id" => "comments#destroy", :via => :delete, :as => :comment
+  
+  match "/games/:game_id/predictions" => "predictions#create", :via => :post, :as => :game_predictions
   
   root :to => "pages#index"
   

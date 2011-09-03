@@ -13,6 +13,25 @@
   </p>
 </div>
 <div class="content_pane">
+  <h2>Predictions</h2>
+  <% if user_signed_in? && !@prediction.nil? %>
+    <%= render 'predictions/form' %>
+  <% else %>
+    <p>Please <%= link_to "log in", new_user_session_path %> to add prediction!</p>
+  <% end %>
+  <div class="clear"></div>
+  <% if @game.predictions.blank? %>
+    <p>No prediction yet</p>
+  <% end %>
+  <% @game.predictions.each do |prediction| %>
+    <%= "#{prediction.user.email} predicts:" %>
+    <p>
+      <%= "#{@game.home_team.name} #{prediction.home_score} vs #{prediction.away_score} #{@game.away_team.name}" %><br />
+      Predicted on <%= prediction.created_at.strftime('%b %d, %Y at %H:%M') %>
+    </p>
+  <% end %>
+</div>
+<div class="content_pane">
   <h2>Comments</h2>
   <% if user_signed_in? && !@comment.nil? %>
     <%= render 'comments/form' %>

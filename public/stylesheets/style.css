@@ -238,3 +238,10 @@ div.alert {
   font-size: 18px;
   padding: 3px;
 }
+.prediction_score_input {
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  font-size: 28px;
+  text-align: center;
+}
