@@ -6,6 +6,13 @@
       <%= submit_tag "Search", :name => nil %>
     </p>
   <% end %>
+  <%= gmaps("map_options" => { 
+                  "detect_location" => false,
+                  "auto_zoom" => false,
+                  "zoom" => 16
+            }, "markers" => { 
+                  "data" => @json 
+            }) %>
 </div>
 <div id="content" class="content_pane">
 	<div id="header">
