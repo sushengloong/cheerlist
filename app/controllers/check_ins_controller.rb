@@ -11,7 +11,12 @@ class CheckInsController < ApplicationController
   end
 
   def new
-    @game = Game.find params[:game_id]
+    ip = Rails.env.production? ? request.ip : "60.48.210.169"
+    @location = Location.new(:ip_address => ip)
+    @location.geocode
+    @location.reverse_geocode
+      logger.debug "[$COUNTRY$] #{@location.country.inspect}"
+    @game = Game.find(params[:game_id])
     if @game.nil?
       redirect_to games_url, :alert => "No such game found!"
     end

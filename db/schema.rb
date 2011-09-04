@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903143700) do
+ActiveRecord::Schema.define(:version => 20110904060806) do
 
   create_table "check_ins", :force => true do |t|
     t.integer  "user_id"
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -36,6 +37,12 @@ ActiveRecord::Schema.define(:version => 20110903143700) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -52,6 +59,20 @@ ActiveRecord::Schema.define(:version => 20110903143700) do
     t.integer  "away_team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "address"
+    t.string   "cross_street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.integer  "country_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ip_address"
   end
 
   create_table "predictions", :force => true do |t|

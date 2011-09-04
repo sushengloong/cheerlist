@@ -1,4 +1,6 @@
 Cheerlist::Application.routes.draw do
+  resources :locations
+
   resources :predictions
 
   resources :friendships

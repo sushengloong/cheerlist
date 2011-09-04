@@ -18,6 +18,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_with_kaminari', '~> 0.1'
+gem 'geocoder'
 
 # Use unicorn as the web server
 # gem 'unicorn'

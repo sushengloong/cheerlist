@@ -13,7 +13,14 @@
   <% end %>
   
   <div class="field">
-    <%#= f.label :time %><br />
+    Your Location:<br />
+    IP Address: <%= @location.ip_address %></br>
+    Address: <%=  @location.address %><br />
+    City: <%= @location.city %><br />
+    Postal Code: <%= @location.postal_code %><br />
+    Country: <%= @location.country.name %><br />
+    Coordinate: <%= "#{@location.latitude}, #{@location.longitude}" %>
+    <%#= f.label :time %>
     <%#= f.datetime_select :time %>
   </div>
   
