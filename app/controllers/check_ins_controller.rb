@@ -15,7 +15,7 @@ class CheckInsController < ApplicationController
     @location = Location.new(:ip_address => ip)
     @location.geocode
     @location.reverse_geocode
-      logger.debug "[$COUNTRY$] #{@location.country.inspect}"
+    @json = @location.to_gmaps4rails
     @game = Game.find(params[:game_id])
     if @game.nil?
       redirect_to games_url, :alert => "No such game found!"

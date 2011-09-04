@@ -2,6 +2,7 @@ class Location < ActiveRecord::Base
   belongs_to :country
   has_many :check_ins
   
+  acts_as_gmappable :process_geocoding => false
   geocoded_by :address
   geocoded_by :ip_address
   reverse_geocoded_by :latitude, :longitude do |obj,results|
@@ -16,6 +17,10 @@ class Location < ActiveRecord::Base
       obj.country_id  = (country.id unless country.nil?) ||
                           Country.find_by_name("Malaysia").id
     end
+  end
+  
+  def gmaps4rails_address
+    "#{self.street}, #{self.city}, #{self.country}"
   end
   
   after_validation :geocode, :reverse_geocode

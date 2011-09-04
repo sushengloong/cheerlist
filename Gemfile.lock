@@ -36,6 +36,7 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (2.1.4-x86-mingw32)
     builder (2.1.2)
+    crack (0.1.8)
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -49,6 +50,8 @@ GEM
       rack (>= 1.1.0, < 2)
     gem_plugin (0.2.3)
     geocoder (1.0.2)
+    gmaps4rails (1.0.2)
+      crack
     i18n (0.5.0)
     jquery-rails (1.0.13)
       railties (~> 3.0)
@@ -143,6 +146,7 @@ DEPENDENCIES
   acts_as_commentable_with_threading
   devise
   geocoder
+  gmaps4rails
   jquery-rails (>= 1.0.12)
   kaminari
   mongrel (>= 1.2.0.pre2)

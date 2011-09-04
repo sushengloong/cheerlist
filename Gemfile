@@ -19,6 +19,7 @@ gem 'kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_with_kaminari', '~> 0.1'
 gem 'geocoder'
+gem 'gmaps4rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
