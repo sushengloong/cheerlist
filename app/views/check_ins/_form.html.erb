@@ -12,25 +12,32 @@
   </div>
   <% end %>
   
+  <%= f.fields_for :location do |builder| %>
+    <%= render "check_ins/check_in_location", :f => builder %>
+  <% end %>
+  <!--
   <div class="field">
-    Your Location:<br />
-    IP Address: <%= @location.ip_address %></br>
-    Address: <%=  @location.address %><br />
-    City: <%= @location.city %><br />
-    Postal Code: <%= @location.postal_code %><br />
-    Country: <%= @location.country.name %><br />
-    Coordinate: <%= "#{@location.latitude}, #{@location.longitude}" %>
+    Location:<br />
+    IP Address: <%#= @location.ip_address %></br>
+    Address: <%#=  @location.address %><br />
+    City: <%#= @location.city %><br />
+    Postal Code: <%#= @location.postal_code %><br />
+    Country: <%#= @location.country.name %><br />
+    Coordinate: <%#= "#{@location.latitude}, #{@location.longitude}" %>
     <%#= f.label :time %>
     <%#= f.datetime_select :time %>
   </div>
-  
+  -->
   <div class="field">
-    <%= gmaps("map_options" => { 
-                    "detect_location" => false,
-                    "auto_zoom" => false,
-                    "zoom" => 16
-              }, "markers" => { 
-                    "data" => @json 
+    <%= gmaps(:map_options => { 
+                    :detect_location => false,
+                    :auto_zoom => false,
+                    :zoom => 16
+              }, :markers => { 
+                    :data => @json,
+                    :options => {
+                        :draggable => true
+                    }
               }) %>
   </div>
   

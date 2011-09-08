@@ -11,16 +11,21 @@ class CheckInsController < ApplicationController
   end
 
   def new
-    ip = Rails.env.production? ? request.ip : "60.48.210.169"
-    @location = Location.new(:ip_address => ip)
-    @location.geocode
-    @location.reverse_geocode
-    @json = @location.to_gmaps4rails
-    @game = Game.find(params[:game_id])
-    if @game.nil?
-      redirect_to games_url, :alert => "No such game found!"
+    #ip = Rails.env.production? ? request.ip : "60.48.210.169"
+    #@location = Location.new(:ip_address => ip)
+    #@location.geocode
+    #@location.reverse_geocode
+    if current_user.has_checked_in? params[:game_id]
+      redirect_to games_url, :alert => "You've already checked in the game!"
+    else
+      @game = Game.find(params[:game_id])
+      if @game.nil?
+        redirect_to games_url, :alert => "No such game found!"
+      end
+      @check_in = CheckIn.new
+      location = @check_in.build_location(:latitude => 1.46343, :longitude => 103.7547149)
+      @json = location.to_gmaps4rails
     end
-    @check_in = CheckIn.new
   end
   
   def create

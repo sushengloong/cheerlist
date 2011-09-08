@@ -245,3 +245,24 @@ div.alert {
   font-size: 28px;
   text-align: center;
 }
+.location_field {
+  font-size: 16px;
+  float: left;
+}
+.location_field input {
+  font-size: 16px;
+  padding: 5px;
+  width: 240px;
+  height: 30px;
+  margin-right: 8px;
+}
+.location_field select {
+  font-size: 16px;
+  padding: 5px;
+  width: 252px;
+  height: 41px;
+  margin-right: 8px;
+}
+.location_field input.long {
+  width: 500px;
+}
