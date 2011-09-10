@@ -14,30 +14,23 @@
                   "data" => @json 
             }) %>
 </div>
-<div id="content" class="content_pane">
-	<div id="header">
-		<h1>Welcome aboard</h1>
-		<h2>You&rsquo;re riding Ruby on Rails!</h2>
-	</div>
-	<div id="about">
-		<h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
-		<div id="about-content" style="display: none"></div>
-	</div>
-	<div id="getting-started">
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique dignissim dignissim. Donec sollicitudin libero a mauris aliquet porttitor. Integer nec ultrices urna. Phasellus vitae purus enim. In lectus ipsum, dignissim eu volutpat sit amet, rutrum non ligula. Praesent tempor nisl eros. Etiam id justo id est scelerisque eleifend. Phasellus consectetur dui tristique libero mollis ut eleifend quam pharetra. Fusce orci purus, dapibus eu aliquet convallis, semper ut eros. Curabitur imperdiet magna mattis risus commodo tempus. Duis lectus ipsum, tincidunt in egestas eu, bibendum ut diam. Nam arcu velit, semper nec varius convallis, lobortis vitae est. Aliquam convallis, ipsum nec imperdiet facilisis, magna velit rutrum lectus, sit amet consectetur magna odio nec elit. Integer auctor, ante id posuere molestie, sem augue accumsan mi, tempor euismod metus nisl eu mauris.
-		</p>
-		<p>
-			non vehicula libero. Mauris adipiscing commodo sapien, id bibendum justo venenatis eget. Sed vel convallis ligula. Fusce in scelerisque orci. Cras aliquam, mi et porta auctor, lorem nunc sagittis dui, id consequat quam purus ac turpis. Ut volutpat consectetur ligula id tempus. Vestibulum iaculis laoreet magna, convallis auctor nunc fermentum nec. Donec et eros est. Proin luctus pharetra risus quis scelerisque. Maecenas pharetra, nunc et laoreet rhoncus, eros nibh vestibulum orci, eget accumsan tortor nulla sed dui.
-		</p>
-		<p>
-			elit lectus, varius at semper in, tristique vel est. Morbi porttitor condimentum ligula id bibendum. Proin consectetur, justo in euismod laoreet, urna est iaculis est, vitae porta dui augue ac eros. Morbi sodales scelerisque facilisis. Pellentesque a sapien in mi posuere cursus. Praesent at ornare augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque eget ante nunc, ac fringilla enim. In rutrum mauris accumsan neque pulvinar congue. Sed sodales nibh a tortor interdum rutrum. Nunc consectetur molestie convallis. Vivamus pretium quam a elit convallis eleifend at quis felis. Maecenas pretium faucibus ipsum. Ut vitae tellus arcu, sed scelerisque odio. Cras id elit eget augue placerat volutpat.
-		</p>
-		<p>
-			Vestibulum nibh augue, elementum et laoreet ut, pharetra bibendum metus. Curabitur pretium elementum risus, quis cursus risus consequat et. Nulla facilisi. Sed rutrum semper orci, sed dignissim tellus commodo rhoncus. Nulla rhoncus turpis et turpis bibendum eget scelerisque risus viverra. Proin luctus feugiat metus non rutrum. Aliquam urna orci, vulputate et iaculis et, varius at urna. In hac habitasse platea dictumst. Quisque et magna enim. Praesent lobortis est vel felis faucibus volutpat sit amet viverra ligula. Sed eu elit neque, id hendrerit elit. Nunc bibendum congue est et porttitor. Mauris sit amet justo neque, eu semper orci.
-		</p>
-		<p>
-			In hac habitasse platea dictumst. Etiam laoreet cursus ipsum nec malesuada. Ut at lectus urna. Pellentesque felis augue, sodales nec varius quis, semper id arcu. Duis vulputate dui dui. Integer non mauris tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus hendrerit, lorem a viverra sollicitudin, ligula leo ultricies metus, a fermentum augue lacus sed justo. Aenean mi eros, bibendum vel placerat id, laoreet et risus. Nunc at purus ante, at laoreet nulla. Integer fringilla est pharetra ligula consequat rutrum et eget augue. Nullam rutrum aliquet nunc non aliquet. Sed pulvinar lectus ut magna tristique gravida gravida nibh porttitor. Quisque et lectus eget dolor accumsan sagittis a id nisl. Vestibulum at nisi vitae justo mollis eleifend. Cras facilisis arcu leo, elementum varius tellus.
-		</p>
-	</div>
+<div class="content_pane">
+  <h1>Recent Activity</h1>
+  <% @activities.each do |activity| %>
+    <div class="recent_activity">
+      <div class="activity_user_thumbnail">
+        <%= image_tag (activity.user.profile.image_url.blank? ? "default_avatar.gif":activity.user.profile.image_url.to_s), 
+        :alt => "User #{activity.user.id}" %>
+      </div>
+      <div class="activity_desc">
+        <%= link_to("#{activity.user.profile.first_name} #{activity.user.profile.last_name}", 
+        profile_path(activity.user)) %>
+        <%= " in #{activity.target.location.name}" %> <br />
+        checked-in the game 
+        <%= link_to("#{activity.target.game.home_team.name} vs #{activity.target.game.away_team.name}",
+        game_path(activity.target.game.id)) %>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
 </div>

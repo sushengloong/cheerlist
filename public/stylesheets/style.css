@@ -36,6 +36,7 @@ div.alert {
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+  overflow: auto;
 }
 .content_pane_title {
 	margin-top: 25px;
@@ -272,4 +273,15 @@ div.alert {
 }
 .location_field input.long {
   width: 500px;
+}
+.recent_activity {
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 10px;
+}
+.recent_activity .activity_user_thumbnail {
+  float: left;
+  margin-right: 5px;
+}
+.recent_activity .activity_desc {
+  float: left;
 }

@@ -19,8 +19,8 @@ jQuery(document).ready(function() {
 		jQuery.fancybox({
 			'padding'		: 0,
 			'autoScale'		: false,
-			'transitionIn'	: 'none',
-			'transitionOut'	: 'none',
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic',
 			'title'			: this.title,
 			'width'			: 640,
 			'height'		: 385,
