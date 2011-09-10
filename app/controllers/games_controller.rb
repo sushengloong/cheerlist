@@ -14,7 +14,9 @@ class GamesController < ApplicationController
     @locations = @game.check_ins.map do |check_in|
       check_in.location
     end
-    @json = @locations.to_gmaps4rails
+
+    @json = @locations.blank? ? [] : @locations.to_gmaps4rails
+    
     unless current_user.blank?
       @comment = Comment.build_from(@game, current_user.id, "")
     end
