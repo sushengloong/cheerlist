@@ -106,6 +106,13 @@ div.alert {
 #sidebar .links a:hover {
 	color: #E12000;
 }
+#intro_video {
+  width: 220px;
+  height: 160px;
+}
+#intro_video:hover {
+  border: 1px solid #fc0;
+}
 #footer {
 	clear: both;
 }

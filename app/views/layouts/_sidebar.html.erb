@@ -1,5 +1,12 @@
 <div id="sidebar">
   <div class="content_pane">
+		<h2 class="content_pane_title">Discover CheerList!</h2>
+    <%= link_to(image_tag("player.jpg", :alt => "Discover CheerList!", :id => "intro_video"),
+        "http://www.youtube.com/watch?v=fFj4fvAlf7g?fs=1&amp;autoplay=1",   
+        :id => "intro_video_link", :class => "video", :title => "Discover CheerList!") %>
+    
+  </div>
+  <div class="content_pane">
 		<h2 class="content_pane_title">Leaderboard</h2>
 		<ol class="links">
 			<li>
@@ -33,5 +40,5 @@
         <a href="http://guides.rubyonrails.org/">Ben</a>
       </li>
 		</ol>
-	</div>
+  </div>
 </div>

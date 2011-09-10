@@ -15,6 +15,26 @@ jQuery(document).ready(function() {
 		}
   });
   
+  jQuery("#intro_video_link").click(function() {
+		jQuery.fancybox({
+			'padding'		: 0,
+			'autoScale'		: false,
+			'transitionIn'	: 'none',
+			'transitionOut'	: 'none',
+			'title'			: this.title,
+			'width'			: 640,
+			'height'		: 385,
+			'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+			'type'			: 'swf',
+			'swf'			: {
+			'wmode'				: 'transparent',
+			'allowfullscreen'	: 'true'
+			}
+		});
+
+		return false;
+	});
+  
   if (typeof Gmaps != "undefined") {
     Gmaps.map.HandleDragend = function(pos) {
       var geocoder = new google.maps.Geocoder();
