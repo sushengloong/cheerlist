@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(:version => 20110908095213) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "location_id"
-    t.string   "name"
   end
 
   create_table "comments", :force => true do |t|
@@ -74,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20110908095213) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
+    t.string   "name"
   end
 
   create_table "predictions", :force => true do |t|

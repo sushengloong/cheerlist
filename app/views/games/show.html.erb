@@ -20,6 +20,20 @@
   </p>
 </div>
 <div class="content_pane">
+  <h2>Remote Check-in Map</h2>
+  <%= gmaps(:map_options => { 
+                    :detect_location => false,
+                    :auto_zoom => false,
+                    :zoom => 14
+              }, :markers => { 
+                    :data => @json,
+                    :options => {
+                        :draggable => false
+                    }
+              }) %>
+</div>
+
+<div class="content_pane">
   <h2>Predictions</h2>
   <% if user_signed_in? && !@prediction.nil? %>
     <%= render 'predictions/form' %>
