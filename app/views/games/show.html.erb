@@ -24,7 +24,7 @@
   <%= gmaps(:map_options => { 
                     :detect_location => false,
                     :auto_zoom => false,
-                    :zoom => 1
+                    :zoom => @json.blank? ? 1 : 14
               }, :markers => { 
                     :data => @json,
                     :options => {
