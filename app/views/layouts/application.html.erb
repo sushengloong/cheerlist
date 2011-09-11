@@ -7,10 +7,22 @@
 		<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
 		<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
 		<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+    <%= javascript_include_tag :defaults %>
 		<%= stylesheet_link_tag "fancybox/jquery.fancybox-1.3.4"%>
 		<%= stylesheet_link_tag 'style', :media => 'screen' %> 
-		<%= javascript_include_tag :defaults %>
 		<%= javascript_include_tag "fancybox/jquery.fancybox-1.3.4.pack" %>
+    <!--ShareThis starts here-->
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <%= javascript_include_tag "http://w.sharethis.com/button/buttons.js" %>
+    <script type="text/javascript">
+      stLight.options({publisher:'d177bc9b-db72-4070-bf96-793e528f6308'});
+    </script>
+    <%#= javascript_include_tag "http://s.sharethis.com/loader.js" %>
+    <script>
+      //var options={"publisher":"d177bc9b-db72-4070-bf96-793e528f6308","position":"left","ad":{"visible":false,"openDelay":"5","closeDelay":"0"},"chicklets":{"items":["facebook","twitter","gbuzz","linkedin","email"]}}; 
+      //var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+    </script>
+    <!--ShareThis ends here-->
     <%= yield :head %>
 		<%= csrf_meta_tag %>
 	</head>

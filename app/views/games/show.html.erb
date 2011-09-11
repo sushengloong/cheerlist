@@ -1,6 +1,8 @@
 <div class="content_pane">
   <p id="notice"><%= notice %></p>
-  <h2>Game</h2>
+  <h2 class="left">Game</h2>
+  <%= render "layouts/sharethis_vcount" %>
+  <div class="clear"></div>
   <p>
     <%= @game.time.strftime('%b %d, %Y at %H:%M') %> - <%= @game.status %>    
     <% if user_signed_in? && !current_user.has_checked_in?(@game.id) %>
@@ -20,11 +22,11 @@
   </p>
 </div>
 <div class="content_pane">
-  <h2>Remote Check-in Map</h2>
+  <div><h2>Remote Check-in Map</h2></div>
   <%= gmaps(:map_options => { 
                     :detect_location => false,
                     :auto_zoom => false,
-                    :zoom => @json.blank? ? 1 : 14
+                    :zoom => @json.blank? ? 1 : 10
               }, :markers => { 
                     :data => @json,
                     :options => {

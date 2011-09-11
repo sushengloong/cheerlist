@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
-	
+  
+  /* Setup popup login link */
 	jQuery("a#login_link").fancybox({
 		'width' : 500,
 		'height' : 360,
@@ -15,6 +16,7 @@ jQuery(document).ready(function() {
 		}
   });
   
+  /* Setup intro video on sidebar */
   jQuery("#intro_video_link").click(function() {
 		jQuery.fancybox({
 			'padding'		: 0,
@@ -35,10 +37,11 @@ jQuery(document).ready(function() {
 		return false;
 	});
   
-  if (jQuery("#recent_activities")) {
+  if (jQuery("#recent_activities").length > 0) {
     setTimeout(updateRecentActivities, 10000);
-  }  
+  }
   
+  /* Setup share check-in map */
   if (typeof Gmaps != "undefined") {
     Gmaps.map.HandleDragend = function(pos) {
       var geocoder = new google.maps.Geocoder();
@@ -80,6 +83,7 @@ function about() {
 	info.style.display = 'block'
 }
 
+/* Update recent activities on home page with AJAX polling */
 function updateRecentActivities () {
   if ($(".recent_activity").length > 0) {
     var after = jQuery(".recent_activity:first-child").attr("data-time");
