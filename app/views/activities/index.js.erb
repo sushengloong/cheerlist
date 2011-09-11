@@ -1,3 +1,6 @@
 <% unless @activities.empty? %>
+if (jQuery(".recent_activity").length >= 10) {
+  jQuery(".recent_activity:last-child").remove()
+}
 jQuery("#recent_activities").prepend("<%=raw escape_javascript(render(@activities)) %>");
 <% end %>

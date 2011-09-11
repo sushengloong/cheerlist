@@ -82,7 +82,7 @@ function about() {
 
 function updateRecentActivities () {
   if ($(".recent_activity").length > 0) {
-    var after = $(".recent_activity:first-child").attr("data-time");
+    var after = jQuery(".recent_activity:first-child").attr("data-time");
   } else {
     var after = "0";
   }
