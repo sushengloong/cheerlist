@@ -34,6 +34,8 @@ Cheerlist::Application.routes.draw do
   
   match "/games/:game_id/predictions" => "predictions#create", :via => :post, :as => :game_predictions
   
+  match "/activities" => "activities#index", :via => :get, :as => :activities
+  
   root :to => "pages#index"
   
   # The priority is based upon order of creation:

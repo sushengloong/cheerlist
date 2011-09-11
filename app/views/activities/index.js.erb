@@ -1,0 +1,3 @@
+<% unless @activities.empty? %>
+jQuery("#recent_activities").prepend("<%=raw escape_javascript(render(@activities)) %>");
+<% end %>

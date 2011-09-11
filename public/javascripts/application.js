@@ -35,6 +35,10 @@ jQuery(document).ready(function() {
 		return false;
 	});
   
+  if (jQuery("#recent_activities")) {
+    setTimeout(updateRecentActivities, 10000);
+  }  
+  
   if (typeof Gmaps != "undefined") {
     Gmaps.map.HandleDragend = function(pos) {
       var geocoder = new google.maps.Geocoder();
@@ -74,4 +78,14 @@ function about() {
 	xhr.send("");
 	info.innerHTML = xhr.responseText;
 	info.style.display = 'block'
+}
+
+function updateRecentActivities () {
+  if ($(".recent_activity").length > 0) {
+    var after = $(".recent_activity:first-child").attr("data-time");
+  } else {
+    var after = "0";
+  }
+  $.getScript("/activities.js?&after=" + after)
+  setTimeout(updateRecentActivities, 10000);
 }
