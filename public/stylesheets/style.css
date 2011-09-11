@@ -15,6 +15,15 @@ body {
 	font-family: "proxima-nova-1","proxima-nova-2",helvetica,arial,sans-serif;
 	background-color: #EDEFED;
 }
+.gmaps4rails_map {
+  display: table-cell;
+  vertical-align: middle;
+}
+.loading_icon {
+	display: block;
+  vertical-align: middle;
+  margin: 0px auto
+}
 div.notice {
 	margin-top: 3px;
 	margin-bottom: 0px;
