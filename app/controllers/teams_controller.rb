@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.order(:name).page(params[:page]).per(5)
+    @teams = Team.order(:name).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
