@@ -50,7 +50,7 @@
     <%= "#{prediction.user.email} predicts:" %>
     <p>
       <%= "#{@game.home_team.name} #{prediction.home_score} vs #{prediction.away_score} #{@game.away_team.name}" %><br />
-      Predicted on <%= prediction.created_at.strftime('%b %d, %Y at %H:%M') %>
+      Predicted on <%= to_pretty prediction.created_at %>
     </p>
   <% end %>
 </div>
@@ -66,10 +66,22 @@
     <p>No shoots yet</p>
   <% end %>
   <% @game.comment_threads.each do |comment| %>
-    <%= "#{comment.user.email} shoots:" %>
-    <p>
-      <%= comment.body %><br />
-      Shot at <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>
-    </p>
+    <div class="comment">
+      <div class="comment_header">
+        <div class="comment_author_thumbnail">
+          <%= image_tag (comment.user.profile.image_url.blank? ? "default_avatar.gif":comment.user.profile.image_url.to_s), 
+              :alt => "User #{comment.user.id}" %>
+        </div>
+        <div class="comment_meta">
+          <span class="author"><%= "#{comment.user.profile.first_name} #{comment.user.profile.last_name}" %></span>
+          <%= "shot at #{to_pretty(comment.created_at)}" %>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="comment_body">
+        <%= comment.body %>
+      </div>
+      <div class="clear"></div>
+    </div>
   <% end %>
 </div>

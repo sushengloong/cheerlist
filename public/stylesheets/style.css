@@ -234,3 +234,32 @@ div.alert {
   float: left;
   width: 30%;
 }
+.comment {
+  width: 500px;
+}
+.comment_header {
+  -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .08);
+  height: 24px;
+  background-color: #E2E1DE;
+}
+.comment_header .comment_author_thumbnail {
+  float: left;
+}
+.comment_header .comment_meta {
+  float: left;
+}
+.comment_header .author {
+  font-weight: bold;
+  margin-right: 100px;
+}
+.comment_header img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.comment_body {
+  height: 50px;
+}

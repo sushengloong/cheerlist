@@ -1,6 +1,8 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   
+  default_scope :order => 'comments.created_at DESC'
+  
   validates_presence_of :body
   validates_presence_of :user
   
