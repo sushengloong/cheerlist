@@ -6,7 +6,7 @@
   <p>
     <%= @game.time.strftime('%b %d, %Y at %H:%M') %> - <%= @game.status %>    
     <% if user_signed_in? && !current_user.has_checked_in?(@game.id) %>
-      <%= button_to 'Check-In', game_check_ins_path(@game) %>
+      <%= link_to 'Check-In', game_check_ins_path(@game), :class => "grey_button" %>
     <% elsif user_signed_in? && current_user.has_checked_in?(@game.id) %>
       Checked-in!
     <% else %>

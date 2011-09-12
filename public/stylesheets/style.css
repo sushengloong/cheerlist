@@ -230,3 +230,7 @@ div.alert {
 .recent_activity .activity_desc {
   float: left;
 }
+.mobile_app_download {
+  float: left;
+  width: 30%;
+}

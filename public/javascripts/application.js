@@ -1,5 +1,9 @@
 jQuery(document).ready(function() {
   
+  if (jQuery(".grey_button").length > 0) {
+    jQuery(".grey_button").button();
+  }
+  
   /* Setup popup login link */
 	jQuery("a#login_link").fancybox({
 		'width' : 500,

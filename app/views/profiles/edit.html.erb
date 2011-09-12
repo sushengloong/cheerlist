@@ -4,7 +4,7 @@
   <%= form_for(@profile) do |f| %>
     <%= render :partial => 'form', :locals => { :f => f, :teams => @teams } %>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit :class => "grey_button" %>
     </div>
   <% end %>
   

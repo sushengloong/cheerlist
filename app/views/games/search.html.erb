@@ -4,7 +4,7 @@
   <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
     <p>
       <%= text_field_tag :search, params[:search] || "Manchester United" %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search", :class => "grey_button" %>
     </p>
   <% end %>
   

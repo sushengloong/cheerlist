@@ -3,16 +3,21 @@
   <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
     <p>
       <%= text_field_tag :search, params[:search] || "Manchester United" %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search", :class => "grey_button"  %>
     </p>
   <% end %>
-  <%= gmaps("map_options" => { 
-                  "detect_location" => false,
-                  "auto_zoom" => false,
-                  "zoom" => 10
-            }, "markers" => { 
-                  "data" => @json 
-            }) %>
+  <div class="mobile_app_download">
+    <%= image_tag("mobile/iphone_logo.png", :alt => "iphone logo") %>
+    <%= link_to("Download", "http://www.apple.com", :class => "mobile_app_download_button grey_button") %>
+  </div>
+  <div class="mobile_app_download">
+    <%= image_tag("mobile/android_logo.png", :alt => "android logo") %>
+    <%= link_to("Download", "http://www.android.com", :class => "mobile_app_download_button grey_button") %>
+  </div>
+  <div class="mobile_app_download">
+    <%= image_tag("mobile/blackberry_logo.png", :alt => "blackberry logo") %>
+    <%= link_to("Download", "http://www.blackberry.com", :class => "mobile_app_download_button grey_button") %>
+  </div>
 </div>
 <div class="content_pane">
   <h1>Recent Activity</h1>
