@@ -1,22 +1,25 @@
 <div id="search" class="content_pane">
-  <h1>Search for Your Favourite Games!</h1>
+  <h1>Search for Your Favourite Games</h1>
   <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
     <p>
       <%= text_field_tag :search, params[:search] || "Manchester United" %>
       <%= submit_tag "Search", :class => "grey_button"  %>
     </p>
   <% end %>
-  <div class="mobile_app_download">
-    <%= image_tag("mobile/iphone_logo.png", :alt => "iphone logo") %>
-    <%= link_to("Download", "http://www.apple.com", :class => "mobile_app_download_button grey_button") %>
-  </div>
-  <div class="mobile_app_download">
-    <%= image_tag("mobile/android_logo.png", :alt => "android logo") %>
-    <%= link_to("Download", "http://www.android.com", :class => "mobile_app_download_button grey_button") %>
-  </div>
-  <div class="mobile_app_download">
-    <%= image_tag("mobile/blackberry_logo.png", :alt => "blackberry logo") %>
-    <%= link_to("Download", "http://www.blackberry.com", :class => "mobile_app_download_button grey_button") %>
+  <div id="mobile_apps">
+    <h3>Check-in games from your smart phone</h3>
+    <div class="mobile_app_download">
+      <%= image_tag("mobile/iphone_logo.png", :alt => "iphone logo") %>
+      <%= link_to("Download", "http://www.apple.com", :class => "mobile_app_download_button grey_button") %>
+    </div>
+    <div class="mobile_app_download">
+      <%= image_tag("mobile/android_logo.png", :alt => "android logo") %>
+      <%= link_to("Download", "http://www.android.com", :class => "mobile_app_download_button grey_button") %>
+    </div>
+    <div class="mobile_app_download">
+      <%= image_tag("mobile/blackberry_logo.png", :alt => "blackberry logo") %>
+      <%= link_to("Download", "http://www.blackberry.com", :class => "mobile_app_download_button grey_button") %>
+    </div>
   </div>
 </div>
 <div class="content_pane">

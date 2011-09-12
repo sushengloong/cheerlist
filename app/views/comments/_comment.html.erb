@@ -1,0 +1,17 @@
+<div class="comment">
+  <div class="comment_header">
+    <div class="comment_author_thumbnail">
+      <%= image_tag (comment.user.profile.image_url.blank? ? "default_avatar.gif":comment.user.profile.image_url.to_s), 
+      :alt => "User #{comment.user.id}" %>
+    </div>
+    <div class="comment_meta">
+      <span class="author"><%= "#{comment.user.profile.first_name} #{comment.user.profile.last_name}" %></span>
+      <%= "shot at #{to_pretty(comment.created_at)}" %>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="comment_body">
+    <%= comment.body %>
+  </div>
+  <div class="clear"></div>
+</div>

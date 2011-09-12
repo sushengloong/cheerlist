@@ -234,6 +234,7 @@ div.alert {
   float: left;
   width: 30%;
 }
+/* Comment */
 .comment {
   width: 500px;
 }
@@ -261,5 +262,35 @@ div.alert {
   margin-right: 10px;
 }
 .comment_body {
+  height: 50px;
+}
+/* Prediction */
+.prediction {
+  width: 500px;
+}
+.prediction_header {
+  -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .08);
+  height: 24px;
+  background-color: #E2E1DE;
+}
+.prediction_header .prediction_author_thumbnail {
+  float: left;
+}
+.prediction_header .prediction_meta {
+  float: left;
+}
+.prediction_header .author {
+  font-weight: bold;
+  margin-right: 100px;
+}
+.prediction_header img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.prediction_body {
   height: 50px;
 }

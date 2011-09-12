@@ -1,0 +1,17 @@
+<div class="prediction">
+  <div class="prediction_header">
+    <div class="prediction_author_thumbnail">
+      <%= image_tag (prediction.user.profile.image_url.blank? ? "default_avatar.gif":prediction.user.profile.image_url.to_s), 
+      :alt => "User #{prediction.user.id}" %>
+    </div>
+    <div class="prediction_meta">
+      <span class="author"><%= "#{prediction.user.profile.first_name} #{prediction.user.profile.last_name}" %></span>
+      <%= "predicted at #{to_pretty(prediction.created_at)}" %>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="prediction_body">
+    <%= "#{@game.home_team.name} #{prediction.home_score} vs #{prediction.away_score} #{@game.away_team.name}" %><br />
+  </div>
+  <div class="clear"></div>
+</div>
