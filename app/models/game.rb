@@ -9,6 +9,7 @@ class Game < ActiveRecord::Base
   validates :away_team_id, :presence => true
   
   acts_as_commentable
+  acts_as_voteable
   
   searchable do
     text :home_team do

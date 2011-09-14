@@ -1,5 +1,4 @@
 <div class="content_pane">
-  <p id="notice"><%= notice %></p>
   <h2 class="left">Game</h2>
   <%= render "layouts/sharethis_vcount" %>
   <div class="clear"></div>
@@ -20,6 +19,10 @@
     <%= @game.away_team.name %>
     <%= image_tag @game.away_team.image_url, :alt => @game.away_team.name %>
   </p>
+  <%= link_to "Thumb Up", game_thumbs_up_path, :class => "grey_button" %>
+  <%= link_to "Thumb Down", game_thumbs_down_path, :class => "grey_button" %>
+  <%= "#{pluralize(@game.votes_for, "Up")}"  %>
+  <%= "#{pluralize(@game.votes_against, "Down")}"  %>
 </div>
 <div class="content_pane">
   <div><h2>Remote Check-in Map</h2></div>

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   
   accepts_nested_attributes_for :profile
   
+  acts_as_voter
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

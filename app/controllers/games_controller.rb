@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   autocomplete :team, :name
+  before_filter :authenticate_user!, :only => [:thumbs_up, :thumbs_down]
   
   def index
     @games = Game.order(:time).page(params[:page]).per(5)
@@ -42,6 +43,25 @@ class GamesController < ApplicationController
       fulltext params[:search]
       paginate :page => params[:page], :per_page => 10
     end
-    #@games = @search.results
+  end
+  
+  def thumbs_up
+    @game = Game.find(params[:id])
+    if current_user.voted_on? @game
+      redirect_to @game, :alert => "You've already voted for the game!"
+    else
+      current_user.vote_for(@game)
+      redirect_to @game, :notice => "Thanks for voting for the game!"
+    end
+  end
+  
+  def thumbs_down
+    @game = Game.find(params[:id])
+    if current_user.voted_on? @game
+      redirect_to @game, :alert => "You've already voted for the game!"
+    else
+      current_user.vote_against(@game)
+      redirect_to @game, :notice => "You've voted against the game!"
+    end
   end
 end
