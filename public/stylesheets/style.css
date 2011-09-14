@@ -121,7 +121,9 @@ div.alert {
 #sidebar .links a:hover {
 	color: #E12000;
 }
-
+.social_buttons_container {
+  text-align: center;
+}
 .social_button {
   margin-right: 6px;
 }

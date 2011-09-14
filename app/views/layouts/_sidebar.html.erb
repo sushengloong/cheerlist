@@ -1,17 +1,19 @@
 <div id="sidebar">
   <div class="content_pane">
 		<h2 class="content_pane_title">Discover CheerList!</h2>
-    <%= link_to(image_tag("player.jpg", :alt => "Discover CheerList!", :id => "intro_video"),
+    <%= link_to(image_tag("video_player.png", :alt => "Discover CheerList!", :id => "intro_video"),
         "http://www.youtube.com/watch?v=fFj4fvAlf7g?fs=1&amp;autoplay=1",   
         :id => "intro_video_link", :class => "video", :title => "Discover CheerList!") %>
-    <%= link_to(image_tag("social/facebook_btn.png", :alt => "Facebook", :class => "social_button"),
+    <div class="social_buttons_container">
+      <%= link_to(image_tag("social/facebook_btn.png", :alt => "Facebook", :class => "social_button"),
         "http://www.facebook.com/cheerlist") %>
-    <%= link_to(image_tag("social/twitter_btn.png", :alt => "Twitter", :class => "social_button"),
+      <%= link_to(image_tag("social/twitter_btn.png", :alt => "Twitter", :class => "social_button"),
         "http://www.twitter.com/cheerlist") %>
-    <%= link_to(image_tag("social/email_btn.png", :alt => "Email", :class => "social_button"),
+      <%= link_to(image_tag("social/email_btn.png", :alt => "Email", :class => "social_button"),
         "mailto:support@cheerlist.com") %>
-    <%= link_to(image_tag("social/blog_btn.png", :alt => "Blog", :class => "social_button"),
+      <%= link_to(image_tag("social/blog_btn.png", :alt => "Blog", :class => "social_button"),
         "http://blog.cheerlist.com") %>
+    </div>
   </div>
   <div class="content_pane">
 		<h2 class="content_pane_title">Our Partners</h2>
