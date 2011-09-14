@@ -1,36 +1,30 @@
 <div class="content_pane">
   <h1>Search Results</h1>
-  
-  <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
-    <p>
-      <%= text_field_tag :search, params[:search] || "Manchester United" %>
-      <%= submit_tag "Search", :class => "grey_button" %>
-    </p>
-  <% end %>
+  <%= render "pages/search_form" %> 
   
   <table>
-  <% if @search.results.blank? %>
-  <tr><td>No game is available</td</tr>
-  <% end %>
-  <%= paginate @search %>
-  <% @search.results.each do |game| %>
-    <tr><td colspan="5"><%= game.time %></td></tr>
-    <tr>
-      <td><%= game.status %></td>
-      <td><%= game.home_team.name %></td>
-      <td>
-      <%= game.home_score unless game.home_score.nil? %> v <%= game.away_score unless game.away_score.nil? %>
-      </td>
-      <td><%= game.away_team.name %></td>
-      <td><%= link_to 'Show', game %></td>
-      <td>
-        <% if user_signed_in? && !current_user.has_checked_in?(game.id) %>
+    <% if @search.results.blank? %>
+      <tr><td>No game is available</td</tr>
+    <% end %>
+    <%= paginate @search %>
+    <% @search.results.each do |game| %>
+      <tr><td colspan="5"><%= game.time %></td></tr>
+      <tr>
+        <td><%= game.status %></td>
+        <td><%= game.home_team.name %></td>
+        <td>
+          <%= game.home_score unless game.home_score.nil? %> v <%= game.away_score unless game.away_score.nil? %>
+        </td>
+        <td><%= game.away_team.name %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td>
+          <% if user_signed_in? && !current_user.has_checked_in?(game.id) %>
           <%= link_to 'Check In', new_check_in_path(game) %>
-        <% elsif user_signed_in? && current_user.has_checked_in?(game.id) %>
+          <% elsif user_signed_in? && current_user.has_checked_in?(game.id) %>
           Checked-in!
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

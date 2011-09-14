@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  autocomplete :team, :name
+  
   def index
     @games = Game.order(:time).page(params[:page]).per(5)
 
@@ -38,7 +40,7 @@ class GamesController < ApplicationController
   def search
     @search = Game.search do
       fulltext params[:search]
-      paginate :page => params[:page], :per_page => 5
+      paginate :page => params[:page], :per_page => 10
     end
     #@games = @search.results
   end

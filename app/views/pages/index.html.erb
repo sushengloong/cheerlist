@@ -1,11 +1,6 @@
 <div id="search" class="content_pane">
   <h1>Search for Your Favourite Games</h1>
-  <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
-    <p>
-      <%= text_field_tag :search, params[:search] || "Manchester United" %>
-      <%= submit_tag "Search", :class => "grey_button"  %>
-    </p>
-  <% end %>
+  <%= render "search_form" %>
   <div id="mobile_apps">
     <h3>Check-in games from your smart phone</h3>
     <div class="mobile_app_download">

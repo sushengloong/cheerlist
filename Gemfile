@@ -19,6 +19,7 @@ gem 'kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_with_kaminari', '~> 0.1'
 gem 'gmaps4rails'
+gem 'rails3-jquery-autocomplete'
 # gem 'geocoder'
 
 # Use unicorn as the web server

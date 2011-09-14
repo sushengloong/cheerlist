@@ -107,6 +107,8 @@ GEM
       activesupport (= 3.0.9)
       bundler (~> 1.0)
       railties (= 3.0.9)
+    rails3-jquery-autocomplete (0.9.1)
+      rails (~> 3.0)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -153,5 +155,6 @@ DEPENDENCIES
   oa-oauth
   oa-openid
   rails (= 3.0.9)
+  rails3-jquery-autocomplete
   sunspot_rails
   sunspot_with_kaminari (~> 0.1)
