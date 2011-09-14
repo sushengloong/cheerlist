@@ -1,7 +1,7 @@
 <%= form_tag games_search_path, :method => :get, :id => "games_search_form" do %>
   <p>
     <%= autocomplete_field_tag :search, params[:search] || "Manchester United", 
-    games_autocomplete_team_name_path %>
+      games_autocomplete_team_name_path, :class => "search_field" %>
     <%= submit_tag "Search", :class => "grey_button"  %>
   </p>
 <% end %>

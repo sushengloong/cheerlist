@@ -190,6 +190,15 @@ div.alert {
 #games_search_form input {
   font-size: 18px;
   padding: 3px;
+  margin: 0;
+}
+#games_search_form .search_field {
+  font-size: 13px;
+  -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+  width: 200px;
+  height: 22px;
 }
 .prediction_score_input {
   width: 32px;
