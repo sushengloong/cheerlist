@@ -7,8 +7,10 @@ jQuery(document).ready(function() {
   /* Setup popup login link */
 	jQuery("a#login_link").fancybox({
 		'width' : 500,
-		'height' : 360,
+		'height' : 425,
 		'padding': 25,
+    'transitionIn'	: 'elastic',
+		'transitionOut'	: 'elastic',
 		'autoDimensions': false,
 		'overlayOpacity' : 0.4,
 		'overlayColor' : 'black',

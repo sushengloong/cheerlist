@@ -98,6 +98,16 @@ div.alert {
 	margin-right: 10px;
 	text-align: center;
 }
+.facebook_connect_button {
+  background: url("../images/social/facebook_connect.png") no-repeat 0 0;
+  height: 21px;
+  width: 169px;
+  text-indent: -9999px;
+  display: block;
+}
+.facebook_connect_button:hover {
+  background: url("../images/social/facebook_connect.png") no-repeat 0 -21px;
+}
 #page {
 	width: 960px;
 	margin: 0px auto;
