@@ -1,0 +1,19 @@
+<tr><td colspan="5"><%= game.time %></td></tr>
+<tr>
+  <td><%= game.status %></td>
+  <td><%= game.home_team.name %></td>
+  <td>
+    <%= game.home_score unless game.home_score.nil? %> v <%= game.away_score unless game.away_score.nil? %>
+  </td>
+  <td><%= game.away_team.name %></td>
+  <td><%= link_to 'Show', game %></td>
+  <td>
+    <% if user_signed_in? && !current_user.has_checked_in?(game.id) %>
+    <%= link_to 'Check-In', new_game_check_ins_path(game), :class => "grey_button" %>
+    <% elsif user_signed_in? && current_user.has_checked_in?(game.id) %>
+    Checked-in!
+    <% else %>
+    <%= link_to "Login to check-in", new_user_session_path %>
+    <% end %>
+  </td>
+</tr>
