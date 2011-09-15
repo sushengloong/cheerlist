@@ -32,17 +32,23 @@ task :fetch_epl_games => :environment do
         home_score = score_tokens[0].strip.to_i
         away_score = score_tokens[1].strip.to_i
       end
+      home_team = Team.find_by_name(gamebox.css(".home a").text.to_s.strip)
+      away_team = Team.find_by_name(gamebox.css(".away a").text.to_s.strip)
+      home_team_id = home_team.id
+      away_team_id = away_team.id
       
-      puts "#{game_time}: #{home_score} - #{away_score}"
+      #puts "#{game_time}: #{home_team.name} #{home_score} - #{away_score} #{away_team.name}"
       
-      #Game.create! :time => game_time, 
-      #  :home_score => home_score, 
-      #  :away_score => away_score,
-      #  :status => gamebox.css(".status").text, 
-      # :home_team_id => nil, 
-      # :away_team_id => nil       
+      game = Game.create! :time => game_time, 
+        :home_score => home_score, 
+        :away_score => away_score,
+        :status => status, 
+        :home_team_id => home_team_id, 
+        :away_team_id => away_team_id
       
+      puts "#{game.time} (#{game.status}): #{game.home_team.name} #{game.home_score} - #{game.away_score} #{game.away_team.name} [SAVED]"
       # puts "#{gamebox.css(".status").text} - #{gamebox.css(".home a").text} #{gamebox.css(".scores a").text} #{gamebox.css(".away a").text}"
     end
   end
+  puts "Task completed!"
 end

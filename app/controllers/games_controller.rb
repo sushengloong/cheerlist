@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   before_filter :authenticate_user!, :only => [:thumbs_up, :thumbs_down]
   
   def index
-    @games = Game.order(:time).page(params[:page]).per(5)
+    @games = Game.order(:time).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
