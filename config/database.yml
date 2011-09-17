@@ -35,5 +35,5 @@ production:
   database: cheerlist_production
   pool: 5
   username: root
-  password:
+  password: cheerlist
   host: localhost

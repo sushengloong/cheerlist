@@ -2,7 +2,7 @@
   <div class="comment_header">
     <div class="comment_author_thumbnail">
       <%= image_tag (comment.user.profile.image_url.blank? ? "default_avatar.gif":comment.user.profile.image_url.to_s), 
-      :alt => "User #{comment.user.id}" %>
+      :alt => "User #{comment.user.id}", :class => "user_avatar" %>
     </div>
     <div class="comment_meta">
       <span class="author"><%= "#{comment.user.profile.first_name} #{comment.user.profile.last_name}" %></span>

@@ -30,7 +30,7 @@
   </p>
   
   <% if user_signed_in? && current_user.id == @profile.user.id %>
-    <%= link_to 'Edit', edit_profile_path(@profile) %>
+    <%= link_to 'Edit', edit_profile_path(@profile.user.id) %>
   <% end %>
 </div>
 <div class="content_pane">

@@ -1,7 +1,7 @@
 <div class="recent_activity" data-time="<%= activity.created_at.to_i %>">
   <div class="activity_user_thumbnail">
     <%= image_tag (activity.user.profile.image_url.blank? ? "default_avatar.gif":activity.user.profile.image_url.to_s), 
-    :alt => "User #{activity.user.id}" %>
+    :alt => "User #{activity.user.id}", :class => "user_avatar" %>
   </div>
   <div class="activity_desc">
     <%= link_to("#{activity.user.profile.first_name} #{activity.user.profile.last_name}", 

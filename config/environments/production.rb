@@ -10,16 +10,16 @@ Cheerlist::Application.configure do
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  # config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # For nginx:
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   # If you have no front-end server that supports something like X-Sendfile,
   # just comment this out and Rails will serve the files
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :error
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
@@ -46,6 +46,21 @@ Cheerlist::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.default_url_options = { 
+    :host => "cheerlist.com:3000"
+  }
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+    :address => "localhost",
+    :port => "25",
+    :domain => "cheerlist.com",
+    :enable_starttls_auto => false
+    #:authentication => :plain,
+    #:user_name => "cheerlist",
+    #:password => "cheerlist"
+  }
 end

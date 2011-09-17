@@ -25,10 +25,10 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_user_id(params[:user_id])
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+        format.html { redirect_to(profile_path(@profile.user.id), :notice => 'Profile was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(profile_path(@profile.user.id), :alert => "Failed to save profile!") }
         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
       end
     end

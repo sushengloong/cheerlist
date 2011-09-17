@@ -251,6 +251,10 @@ div.alert {
 .recent_activity .activity_desc {
   float: left;
 }
+.user_avatar {
+  width: 70px;
+  height: 70px;
+}
 .mobile_app_download {
   float: left;
   width: 30%;

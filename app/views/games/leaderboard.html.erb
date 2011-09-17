@@ -9,7 +9,7 @@
       <tr>
         <td><%= i+1 %></td>
         <td><%= image_tag( (user.profile.image_url.blank? ? "default_avatar.gif":user.profile.image_url.to_s), 
-                :alt => "User #{user.id}") %></td>
+                :alt => "User #{user.id}", :class => "user_avatar") %></td>
         <td><%= "#{user.profile.first_name} #{user.profile.last_name}" %></td>
         <td><%= user.profile.points %></td<>
         <td><%= link_to "View Profile", profile_path(user) %></td>

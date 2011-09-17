@@ -1,12 +1,12 @@
 <div class="content_pane">
   <h1>Editing profile</h1>
   
-  <%= form_for(@profile) do |f| %>
+  <%= form_for(@profile, :url => profile_path(@profile.user.id)) do |f| %>
     <%= render :partial => 'form', :locals => { :f => f, :teams => @teams } %>
     <div class="actions">
       <%= f.submit :class => "grey_button" %>
     </div>
   <% end %>
   
-  <%= link_to 'Back', @profile %>
+  <%= link_to 'Back', profile_path(@profile.user.id) %>
 </div>
