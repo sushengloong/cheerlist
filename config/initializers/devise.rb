@@ -7,8 +7,13 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "no-reply@cheerlist.com"
   
-  config.omniauth :facebook, '221854974534028', '2b3899de2e5de29fddcf30e35a45844c', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } } 
-  config.omniauth :open_id, OpenID::Store::Filesystem.new('/tmp')
+  if Rails.env == "production"
+    config.omniauth :facebook, '221854974534028', '2b3899de2e5de29fddcf30e35a45844c', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } } 
+    config.omniauth :open_id, OpenID::Store::Filesystem.new('/tmp')
+  else
+    config.omniauth :facebook, '217149275011738', '7502abe6fdba88715879f3a446108654', :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } } 
+    config.omniauth :open_id, OpenID::Store::Filesystem.new('/tmp')
+  end
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
