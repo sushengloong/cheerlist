@@ -5,6 +5,8 @@ class Game < ActiveRecord::Base
   has_many :users, :through => :check_ins
   has_many :predictions
   
+  default_scope :order => 'time DESC'
+  
   validates :home_team_id, :presence => true
   validates :away_team_id, :presence => true
   
@@ -18,5 +20,6 @@ class Game < ActiveRecord::Base
     text :away_team do
       away_team.name
     end
+    time :time
   end
 end

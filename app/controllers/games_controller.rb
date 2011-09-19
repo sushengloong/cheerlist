@@ -42,6 +42,7 @@ class GamesController < ApplicationController
     @search = Game.search do
       fulltext params[:search]
       paginate :page => params[:page], :per_page => 10
+      order_by :time, :desc
     end
   end
   
