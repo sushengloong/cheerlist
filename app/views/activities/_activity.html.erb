@@ -6,10 +6,19 @@
   <div class="activity_desc">
     <%= link_to("#{activity.user.profile.first_name} #{activity.user.profile.last_name}", 
     profile_path(activity.user)) %>
-    <%= " in #{activity.target.location.name}" %> <br />
-    checked-in the game 
-    <%= link_to("#{activity.target.game.home_team.name} vs #{activity.target.game.away_team.name}",
-    game_path(activity.target.game.id)) %>
+    <% if activity.activity_type == Activity::CHECKED_IN_GAME %>
+      <%= " in #{activity.target.location.name}" %> <br />
+      checked-in the game 
+      <%= link_to("#{activity.target.game.home_team.name} vs #{activity.target.game.away_team.name}",
+      game_path(activity.target.game.id)) %>
+    <% elsif activity.activity_type == Activity::COMMENTED_IN_GAME %>
+      <% game = Comment.find_commentable(activity.target.commentable_type, activity.target.commentable_id) %>
+      <%= "" %> <br />
+      commented in the game 
+      <%= link_to("#{game.home_team.name} vs #{game.away_team.name}",
+      game_path(game.id)) %><br />
+      &ldquo;<%= truncate(activity.target.body) %>&rdquo;
+    <% end %>
   </div>
   <div class="clear"></div>
 </div>

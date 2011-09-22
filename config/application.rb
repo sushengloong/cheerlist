@@ -40,6 +40,6 @@ module Cheerlist
     config.filter_parameters += [:password]
     
     # Observers
-    config.active_record.observers = :reward_observer, :check_in_observer
+    config.active_record.observers = :reward_observer, :check_in_observer, :comment_observer
   end
 end
