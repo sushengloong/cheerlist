@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     #@location.reverse_geocode
     @locations = Location.all
     @json = @locations.to_gmaps4rails
-    @activities = Activity.order("created_at").limit(20)
+    @activities = Activity.order("created_at desc").limit(15)
   end
   
   def about

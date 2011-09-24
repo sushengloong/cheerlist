@@ -89,20 +89,9 @@ function about() {
 	info.style.display = 'block'
 }
 
-/* Update recent activities on home page with AJAX polling */
-function updateRecentActivities () {
-  if (jQuery(".recent_activity").length > 0) {
-    var after = jQuery(".recent_activity:first-child").attr("data-time");
-  } else {
-    var after = "0";
-  }
-  jQuery.getScript("/activities.js?after=" + after)
-  setTimeout(updateRecentActivities, 10000);
-}
-
 /* Rotate recent activities on home page */
 var delay = 2000; // you can change it
-var count = 14; // How much items to animate
+var count = 15; // How much items to animate
 var showing = 10; //How much items to show at a time
 var i = 0;
 
