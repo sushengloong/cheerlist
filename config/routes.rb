@@ -39,6 +39,11 @@ Cheerlist::Application.routes.draw do
   
   match "/activities" => "activities#index", :via => :get, :as => :activities
   
+  match "/terms" => "pages#terms", :via => :get, :as => :terms
+  match "/privacy" => "pages#privacy", :via => :get, :as => :privacy
+  match "/contact" => "pages#contact", :via => :get, :as => :contact
+  match "/about" => "pages#about", :via => :get, :as => :about
+  
   root :to => "pages#index"
   
   # The priority is based upon order of creation:
