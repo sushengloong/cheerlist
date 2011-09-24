@@ -2,8 +2,6 @@ class Activity < ActiveRecord::Base
   belongs_to :user
   belongs_to :target, :polymorphic => true
   
-  default_scope :order => 'activities.created_at DESC'
-  
   CHECKED_IN_GAME = 1 #target --> model check_in
   COMMENTED_IN_GAME = 2 #target --> model comment
   

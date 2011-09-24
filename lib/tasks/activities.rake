@@ -1,5 +1,5 @@
-desc "Create check-ins with existing games and users"
-task :create_check_ins => :environment do
+desc "Create activities - check-ins, comments, etc"
+task :create_activities => :environment do
   
   singapore = Country.find_by_name "Singapore"
   malaysia = Country.find_by_name "Malaysia"
@@ -28,6 +28,13 @@ task :create_check_ins => :environment do
     end
   else
     puts "Location '#{check_in.location.name}' creation failed!"
+  end
+  
+  comment = Comment.build_from(Game.find_by_id(50), 1, "Man Utd is so awesome!")
+  if comment.save!
+    puts "Comment '#{comment.body}' [SAVED]"
+  else
+    puts "Comment '#{comment.body}' creation failed!"
   end
   
   check_in = CheckIn.new :user_id => 3, :game_id => 50
@@ -69,6 +76,13 @@ task :create_check_ins => :environment do
     puts "Location '#{check_in.location.name}' creation failed!"
   end
   
+  comment = Comment.build_from(Game.find_by_id(50), 3, "Man Utd rocks!")
+  if comment.save!
+    puts "Comment '#{comment.body}' [SAVED]"
+  else
+    puts "Comment '#{comment.body}' creation failed!"
+  end
+  
   check_in = CheckIn.new :user_id => 4, :game_id => 50
   if check_in.create_location(:name => "Ah Lee's House", :address => "59 Jalan Selamat, Kembangan",
     :city => "Singapore", :country_id => singapore.id, 
@@ -93,6 +107,13 @@ task :create_check_ins => :environment do
     end
   else
     puts "Location '#{check_in.location.name}' creation failed!"
+  end
+  
+  comment = Comment.build_from(Game.find_by_id(79), 4, "Proud to be a Man Utd fan!")
+  if comment.save!
+    puts "Comment '#{comment.body}' [SAVED]"
+  else
+    puts "Comment '#{comment.body}' creation failed!"
   end
   
   check_in = CheckIn.new :user_id => 4, :game_id => 79
@@ -134,5 +155,12 @@ task :create_check_ins => :environment do
     puts "Location '#{check_in.location.name}' creation failed!"
   end
   
-  puts "Rake task 'create_check_ins' completed!"
+  comment = Comment.build_from(Game.find_by_id(79), 2, "Cool match!")
+  if comment.save!
+    puts "Comment '#{comment.body}' [SAVED]"
+  else
+    puts "Comment '#{comment.body}' creation failed!"
+  end
+  
+  puts "Rake task 'create_activities' completed!"
 end

@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
 	});
   
   if (jQuery("#recent_activities").length > 0) {
-    setTimeout(updateRecentActivities, 10000);
+    rotateRecentActivities();
   }
   
   /* Setup share check-in map */
@@ -91,11 +91,35 @@ function about() {
 
 /* Update recent activities on home page with AJAX polling */
 function updateRecentActivities () {
-  if ($(".recent_activity").length > 0) {
+  if (jQuery(".recent_activity").length > 0) {
     var after = jQuery(".recent_activity:first-child").attr("data-time");
   } else {
     var after = "0";
   }
-  $.getScript("/activities.js?&after=" + after)
+  jQuery.getScript("/activities.js?after=" + after)
   setTimeout(updateRecentActivities, 10000);
+}
+
+/* Rotate recent activities on home page */
+var delay = 2000; // you can change it
+var count = 14; // How much items to animate
+var showing = 10; //How much items to show at a time
+var i = 0;
+
+function move(i) {
+  return function() {
+    $('#recent_activity_'+i).remove().css('display', 'none').prependTo('#recent_activities');
+  }
+}
+
+function shift() {
+  var toShow = (i + showing) % count;
+  $('#recent_activity_'+toShow).slideDown(1000, move(i));
+  $('#recent_activity_'+i).slideUp(1000, move(i));
+  i = (i + 1) % count;
+  setTimeout('shift()', delay);
+}  
+
+function rotateRecentActivities() {
+  setTimeout('shift()', delay);
 }

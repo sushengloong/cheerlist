@@ -1,4 +1,4 @@
-<div class="recent_activity" data-time="<%= activity.created_at.to_i %>">
+<div class="recent_activity" data-time="<%= activity.created_at.to_i %>" id="recent_activity_<%= index.to_s unless index.nil? %>">
   <div class="activity_user_thumbnail">
     <%= image_tag (activity.user.profile.image_url.blank? ? "default_avatar.gif":activity.user.profile.image_url.to_s), 
     :alt => "User #{activity.user.id}", :class => "user_avatar" %>

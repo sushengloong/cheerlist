@@ -34,7 +34,7 @@ task :create_users => :environment do
     puts "User with email '#{user.email}' creation failed!"
   end
 
-  user = User.new(:email => "sushengloong@hotmail.com", :password => "sushengloong")
+  user = User.new(:email => "sushengloong@gmail.com", :password => "sushengloong")
   user.confirm!
   user.create_profile :first_name => "Sheng Loong", 
       :last_name => "Su", :points => 2011,

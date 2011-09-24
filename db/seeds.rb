@@ -110,7 +110,7 @@ end
 
 Rake::Task["fetch_epl_games"].invoke
 Rake::Task["create_users"].invoke
-Rake::Task["create_check_ins"].invoke
+Rake::Task["create_activities"].invoke
 
 puts "Database seeding completed!"
 
