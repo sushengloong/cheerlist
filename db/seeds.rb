@@ -39,26 +39,26 @@ epl_teams.each do | name, desc |
 end
 
 # Create games
-games = [
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 22), :home_score=>3, :away_score=>0, 
-    :home_team=>"Manchester United", :away_team=>"Tottenham Hotspur" },
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>0, :away_score=>0, 
-    :home_team=>"Aston Villa", :away_team=>"Wolverhampton Wanderers" },
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>2, :away_score=>0, 
-    :home_team=>"Wigan Athletic", :away_team=>"Queens Park Rangers" },
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>0, :away_score=>1, 
-    :home_team=>"Blackburn Rovers", :away_team=>"Everton" },
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>3, :away_score=>1, 
-    :home_team=>"Chelsea", :away_team=>"Norwich City" },
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>0, :away_score=>0, 
-    :home_team=>"Swansea City", :away_team=>"Sunderland" },
-  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>3, :away_score=>1, 
-    :home_team=>"Liverpool", :away_team=>"Bolton Wanderers" },
-  {:status=>"14:00 GMT", :time=>DateTime.new(2011, 9, 10, 14, 00), 
-    :home_team=>"Arsenal", :away_team=>"Swansea City" },
-  {:status=>"14:00 GMT", :time=>DateTime.new(2011, 9, 10, 14, 00), 
-    :home_team=>"Everton", :away_team=>"Aston Villa" }
-]
+#games = [
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 22), :home_score=>3, :away_score=>0, 
+#    :home_team=>"Manchester United", :away_team=>"Tottenham Hotspur" },
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>0, :away_score=>0, 
+#    :home_team=>"Aston Villa", :away_team=>"Wolverhampton Wanderers" },
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>2, :away_score=>0, 
+#    :home_team=>"Wigan Athletic", :away_team=>"Queens Park Rangers" },
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>0, :away_score=>1, 
+#    :home_team=>"Blackburn Rovers", :away_team=>"Everton" },
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>3, :away_score=>1, 
+#    :home_team=>"Chelsea", :away_team=>"Norwich City" },
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>0, :away_score=>0, 
+#    :home_team=>"Swansea City", :away_team=>"Sunderland" },
+#  {:status=>"FT", :time=>DateTime.new(2011, 8, 27), :home_score=>3, :away_score=>1, 
+#    :home_team=>"Liverpool", :away_team=>"Bolton Wanderers" },
+#  {:status=>"14:00 GMT", :time=>DateTime.new(2011, 9, 10, 14, 00), 
+#    :home_team=>"Arsenal", :away_team=>"Swansea City" },
+#  {:status=>"14:00 GMT", :time=>DateTime.new(2011, 9, 10, 14, 00), 
+#    :home_team=>"Everton", :away_team=>"Aston Villa" }
+#]
 
 #games.each do |g|
 #  Game.create! :status=>g[:status], :time=>g[:time], :home_score=>g[:home_score],
@@ -107,3 +107,11 @@ COUNTRIES = ["Afghanistan", "Aland Islands", "Albania", "Algeria", "American Sam
 COUNTRIES.each do |country|
   Country.find_or_create_by_name country
 end
+
+Rake::Task["fetch_epl_games"].invoke
+Rake::Task["create_users"].invoke
+
+puts "Database seeding completed!"
+
+Rake::Task["sunspot:reindex"].invoke
+puts "Sunspot reindexing completed!"

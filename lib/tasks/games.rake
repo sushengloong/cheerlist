@@ -52,5 +52,5 @@ task :fetch_epl_games => :environment do
       # puts "#{gamebox.css(".status").text} - #{gamebox.css(".home a").text} #{gamebox.css(".scores a").text} #{gamebox.css(".away a").text}"
     end
   end
-  puts "Task completed!"
+  puts "Rake task 'fetch_epl_games' completed!"
 end
