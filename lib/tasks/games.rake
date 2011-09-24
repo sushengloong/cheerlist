@@ -31,8 +31,8 @@ task :fetch_epl_games => :environment do
       away_score = nil
       if score.include? "-"
         score_tokens = score.split "-"
-        home_score = score_tokens[0].strip.to_i
-        away_score = score_tokens[1].strip.to_i
+        home_score = score_tokens[0][0..-2].to_i
+        away_score = score_tokens[1][1..-1].to_i
       end
       home_team = Team.find_by_name(gamebox.css(".home a").text.to_s.strip)
       away_team = Team.find_by_name(gamebox.css(".away a").text.to_s.strip)
