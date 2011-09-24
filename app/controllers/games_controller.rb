@@ -3,7 +3,8 @@ class GamesController < ApplicationController
   before_filter :authenticate_user!, :only => [:thumbs_up, :thumbs_down]
   
   def index
-    @games = Game.order(:time).page(params[:page]).per(10)
+    game_date = params[:date].blank? ? Time.now : Date.parse(params[:date])
+    @games = Game.where("date(time) = date(?)", game_date)
 
     respond_to do |format|
       format.html # index.html.erb

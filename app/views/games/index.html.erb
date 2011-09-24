@@ -1,8 +1,10 @@
 <div class="content_pane">
   <h1>All English Premier League Games</h1>
   
-  <%= paginate @games %>
-  
+  <%= form_tag(games_path, :method => "get", :id => "game_date_form") do %>
+    <%= label_tag(:date, "Date") %>
+    <%= text_field_tag("date", params[:date] || Time.now().strftime("%Y-%m-%d"), :class => "datepicker") %>
+  <% end %>
   <table>
     <% if @games.blank? %>
       <tr><td>No game is available</td</tr>
@@ -12,7 +14,5 @@
       <% end %>
     <% end %>
   </table>
-  
-  <%= paginate @games %>
   
 </div>

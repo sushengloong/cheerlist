@@ -47,6 +47,16 @@ jQuery(document).ready(function() {
     rotateRecentActivities();
   }
   
+  if (jQuery(".datepicker").length > 0) {
+    jQuery(".datepicker").datepicker({dateFormat: 'yy-mm-dd',
+		  onSelect: function() {
+        if (jQuery(this).attr('id') == 'date' && jQuery('form#game_date_form').length > 0) {
+			    jQuery('form#game_date_form').submit();
+        }
+		  }
+	  });
+  }
+  
   /* Setup share check-in map */
   if (typeof Gmaps != "undefined") {
     Gmaps.map.HandleDragend = function(pos) {
@@ -90,10 +100,11 @@ function about() {
 }
 
 /* Rotate recent activities on home page */
-var delay = 2000; // you can change it
+var delay = 0; // you can change it
 var count = 15; // How much items to animate
 var showing = 10; //How much items to show at a time
 var i = 0;
+var begun = false;
 
 function move(i) {
   return function() {
@@ -102,6 +113,10 @@ function move(i) {
 }
 
 function shift() {
+  if (i >= 5 && !begun) {
+    delay = 2000;
+    begun = true;
+  }
   var toShow = (i + showing) % count;
   $('#recent_activity_'+toShow).slideDown(1000, move(i));
   $('#recent_activity_'+i).slideUp(1000, move(i));
