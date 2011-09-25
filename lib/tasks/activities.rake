@@ -129,6 +129,20 @@ task :create_activities => :environment do
     puts "Location '#{check_in.location.name}' creation failed!"
   end
   
+  comment = Comment.build_from(Game.find_by_id(58), 3, "Manchester United played well in this game.")
+  if comment.save!
+    puts "Comment '#{comment.body}' [SAVED]"
+  else
+    puts "Comment '#{comment.body}' creation failed!"
+  end
+  
+  comment = Comment.build_from(Game.find_by_id(58), 2, "Manchester United is better than Manchester City!")
+  if comment.save!
+    puts "Comment '#{comment.body}' [SAVED]"
+  else
+    puts "Comment '#{comment.body}' creation failed!"
+  end
+  
   check_in = CheckIn.new :user_id => 1, :game_id => 79
   if check_in.create_location(:name => "NCS Hub", :address => "5 Ang Mo Kio",
     :city => "Singapore", :country_id => singapore.id, 

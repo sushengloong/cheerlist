@@ -9,7 +9,7 @@ task :fetch_epl_games => :environment do
   sd = Date.parse('2011-08-13')
   #sd = Date.parse('2011-09-17')
   #ed = Date.parse('2012-05-13')
-  ed = Date.parse('2011-12-31')
+  ed = Date.parse('2011-10-31')
   
   sd.upto(ed) do |date|
     target = url.sub(/<D>/, date.to_s.delete("-"))
