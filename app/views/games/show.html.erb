@@ -14,9 +14,9 @@
   </p>
   <p>
     <%= image_tag @game.home_team.image_url, :alt => @game.home_team.name %>
-    <%= @game.home_team.name %>
+    <%= link_to @game.home_team.name, @game.home_team %>
     <%= "#{@game.home_score} - #{@game.away_score}" %>
-    <%= @game.away_team.name %>
+    <%= link_to @game.away_team.name, @game.away_team %>
     <%= image_tag @game.away_team.image_url, :alt => @game.away_team.name %>
   </p>
   <%= link_to "Thumb Up", game_thumbs_up_path, :class => "grey_button" %>

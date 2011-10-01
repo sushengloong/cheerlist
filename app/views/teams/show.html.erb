@@ -7,3 +7,25 @@
     <%= @team.description %>
   </p>
 </div>
+<div class="content_pane">
+  <h1>Cheer List</h1>
+  <% if @team.fans.blank? %>
+    <p>No fans are supporting @team.name</p>
+  <% else %>
+    <table>
+      <% @team.fans.each do |fan| %>
+        <tr>
+          <td><%= image_tag (fan.profile.image_url.blank? ? "default_avatar.gif":
+                  fan.profile.image_url.to_s),
+                  :alt => "User #{fan.id}" %></td>
+          <td><%= "User #{fan.id}: #{fan.email}" %></td>
+          <td>
+            <%# if user_signed_in? && current_user.id == @profile.user.id %>
+              <%#= link_to "Unfriend", friendship, :method => :delete %>
+            <%# end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
