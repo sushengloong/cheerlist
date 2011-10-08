@@ -5,11 +5,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
   
-    <link rel="stylesheet" href="css/style.css" />
-
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
   </head> 
   <body> 
 
@@ -29,7 +29,24 @@
       </div><!-- /header -->
 
       <div data-role="content"> 
-        <p>Page content goes here.</p>    
+        <div class="content-primary">
+          <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">English Premier League</li>
+            <li><a href="index.html">Adam Kinkaid</a></li>
+            <li><a href="index.html">Alex Wickerham</a></li>
+            <li><a href="index.html">Avery Johnson</a></li>
+          </ul>
+          <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">All-England Badminton</li>
+            <li><a href="index.html">Bob Cabot</a></li>
+          </ul>
+          <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Tennis World Tour</li>
+            <li><a href="index.html">Caleb Booth</a></li>
+            <li><a href="index.html">Christopher Adams</a></li>
+            <li><a href="index.html">Culver James</a></li>
+          </ul>
+        </div>
       </div><!-- /content -->
 
       <div class="center-wrapper" data-role="footer" data-position="fixed"> 
@@ -38,7 +55,12 @@
           <a href="#" data-role="button" data-theme="b">Today</a>
           <a href="#" data-role="button" data-theme="b">Upcoming</a>
         </div><!-- /controlgroup -->
-        <a href="#" data-icon="arrow-u">All</a>
+        <select name="game-filter" id="game-filter" data-theme="a" data-icon="arrow-u">
+          <option value="all">All</option>
+          <option value="epl">EPL</option>
+          <option value="badminton">Badminton</option>
+          <option value="tennis">Tennis</option>
+        </select>
       </div><!-- /footer -->
 
     </div><!-- /page -->

@@ -7,7 +7,9 @@
 .left {
   float: left;
 }
-
 .right {
   float: right;
+}
+.ui-select {
+  width: 10%; 
 }
